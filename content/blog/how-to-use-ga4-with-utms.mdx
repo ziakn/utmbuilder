@@ -1,0 +1,57 @@
+---
+title: How to Use GA4 with UTMs
+description: Connect UTM naming conventions with GA4 acquisition reports, campaign analysis, and practical marketing measurement.
+date: 2026-05-16
+updated: 2026-05-16
+category: GA4
+tags: [ga4, utm, analytics, acquisition]
+author: UTM Builder Editorial Team
+featuredImage: ga4-utms
+readingTime: 11 min read
+---
+
+## Introduction
+
+GA4 and UTMs work together when marketers need clear campaign attribution. UTMs label the visit before it reaches your website. GA4 records that context after the page loads. The better your UTM naming system is, the easier GA4 reports become to interpret.
+
+## Set the core fields
+
+Use source, medium, and campaign for most marketing links. Source explains where the traffic came from. Medium explains the channel. Campaign identifies the promotion.
+
+```txt
+https://example.com/?utm_source=newsletter&utm_medium=email&utm_campaign=product_launch
+```
+
+## Use content and term carefully
+
+Use `utm_content` for creative variations, button placements, influencer links, QR locations, or ad variants. Use `utm_term` for paid keywords or audience details when needed.
+
+## Best practices block
+
+- Tag email, paid social, affiliates, and QR campaigns.
+- Keep source and medium values consistent.
+- Avoid spaces and uppercase values.
+- Check reports after launch.
+- Compare campaign quality, not only clicks.
+
+## Mistakes block
+
+- Leaving important links untagged.
+- Using different medium values for the same channel.
+- Creating campaign names that cannot be understood later.
+- Ignoring redirects that remove parameters.
+
+## Practical workflow
+
+Generate links with the [UTM Builder](/utm-builder), decode complicated links with the [UTM Decoder](/utm-decoder), and clean old links with the [UTM Cleaner](/utm-cleaner). Related concepts include [UTM Source](/utm-source), [UTM Campaign](/utm-campaign), and [Marketing Attribution](/marketing-attribution).
+
+## FAQ
+
+### Can GA4 show campaign names from UTMs?
+
+Yes. GA4 can use `utm_campaign` in campaign reporting.
+
+### Should QR campaigns use UTMs for GA4?
+
+Yes. QR campaigns should use `utm_medium=qr` and a clear campaign name.
+

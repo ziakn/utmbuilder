@@ -1,0 +1,54 @@
+---
+title: Are UTM Parameters Case Sensitive?
+description: Learn why capitalization matters in campaign reports and how lowercase UTM naming prevents fragmented analytics data.
+date: 2026-05-16
+updated: 2026-05-16
+category: UTM Guides
+tags: [case sensitivity, utm, ga4, analytics hygiene]
+author: UTM Builder Editorial Team
+featuredImage: case-sensitive-report
+readingTime: 8 min read
+---
+
+## Introduction
+
+UTM parameters can create separate report values when capitalization changes. That means `facebook`, `Facebook`, and `FACEBOOK` can appear as different rows in analytics tools. The visit may still be tracked, but reporting becomes harder to read.
+
+## Why case matters
+
+Analytics reports group text values. When two values are spelled differently, they may be grouped separately. Capitalization is one of the easiest differences to overlook.
+
+## Examples block
+
+```txt
+Bad:  utm_source=Facebook&utm_medium=Social
+Good: utm_source=facebook&utm_medium=social
+```
+
+## Best practices block
+
+- Use lowercase by default.
+- Apply lowercase presets in UTM templates.
+- Validate links before launch.
+- Document examples for each channel.
+
+## Mistakes block
+
+- Copying campaign names from titles.
+- Letting ad platforms auto-fill inconsistent values.
+- Mixing creator-provided labels with internal labels.
+
+## Tool workflow
+
+Use the [UTM Validator](/utm-validator) to find uppercase values and the [UTM Builder](/utm-builder) to rebuild clean links. For large link lists, use the [Bulk UTM Builder](/bulk-utm-builder). Related glossary pages: [Traffic Source](/traffic-source), [Conversion Rate](/conversion-rate), and [UTM Medium](/utm-medium).
+
+## FAQ
+
+### Should I ever use uppercase UTMs?
+
+Usually no. Lowercase values are easier to govern and compare.
+
+### Can GA4 merge values later?
+
+You can clean reports in some workflows, but it is better to prevent inconsistent values before launch.
+

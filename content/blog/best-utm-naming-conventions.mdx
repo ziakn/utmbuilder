@@ -1,0 +1,65 @@
+---
+title: Best UTM Naming Conventions for Clean Reports
+description: Build a practical UTM naming system for source, medium, campaign, content, and term values that keeps analytics reports readable.
+date: 2026-05-16
+updated: 2026-05-16
+category: UTM Guides
+tags: [utm naming, campaign tracking, analytics hygiene, governance]
+author: UTM Builder Editorial Team
+featuredImage: naming-system
+readingTime: 10 min read
+---
+
+## Introduction
+
+UTM naming conventions are the rules that keep campaign reports readable. Without rules, every marketer chooses their own labels. One person writes `Facebook`, another writes `fb`, and another writes `facebook_ads`. GA4 may treat those as different values, which creates messy reporting.
+
+## Start with approved medium values
+
+Medium values should describe the channel type. Useful examples include `cpc`, `paid_social`, `organic_social`, `email`, `affiliate`, `video`, `referral`, and `qr`.
+
+## Source should identify the platform
+
+Source values should identify the platform or partner. Examples include `google`, `facebook`, `instagram`, `linkedin`, `newsletter`, `youtube`, and `partner_name`.
+
+## Campaign names should be readable
+
+Campaign names should explain the initiative later. Names like `summer_sale`, `black_friday`, `product_launch`, and `webinar_signup` are easier to understand than vague names like `promo`.
+
+## Examples block
+
+```txt
+utm_source=google&utm_medium=cpc&utm_campaign=brand_search
+utm_source=newsletter&utm_medium=email&utm_campaign=weekly_digest
+utm_source=event&utm_medium=qr&utm_campaign=conference_2026
+```
+
+## Best practices block
+
+- Always lowercase.
+- Avoid spaces.
+- Use one separator style.
+- Document approved medium values.
+- Review campaign values before launch.
+
+## Mistakes block
+
+- Changing source names between campaigns.
+- Using campaign names that are too short.
+- Mixing hyphens and underscores without a standard.
+- Using internal abbreviations nobody remembers.
+
+## Tool workflow
+
+Create links with the [UTM Builder](/utm-builder), generate many at once with the [Bulk UTM Builder](/bulk-utm-builder), and check naming consistency with the [UTM Validator](/utm-validator). Related glossary pages include [UTM Source](/utm-source), [UTM Medium](/utm-medium), and [UTM Campaign](/utm-campaign).
+
+## FAQ
+
+### Should UTM values be lowercase?
+
+Yes. Lowercase values reduce fragmented reports.
+
+### Should I use hyphens or underscores?
+
+Either can work. The important rule is to choose one style and use it consistently.
+

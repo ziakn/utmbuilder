@@ -1,0 +1,58 @@
+---
+title: GA4 Campaign Reporting Guide
+description: Understand how GA4 uses UTM parameters in acquisition reports and how marketers should read campaign performance.
+date: 2026-05-16
+updated: 2026-05-16
+category: GA4
+tags: [ga4, campaign reporting, utm, acquisition]
+author: UTM Builder Editorial Team
+featuredImage: ga4-dashboard
+readingTime: 12 min read
+---
+
+## Introduction
+
+GA4 campaign reporting helps marketers understand how people arrive on a website and what they do after landing. UTM parameters give GA4 extra context about the campaign source, medium, and name. Without clean UTMs, acquisition reports can be vague or fragmented.
+
+## How GA4 reads campaign links
+
+When someone visits your website through a tagged URL, GA4 can read parameters such as `utm_source`, `utm_medium`, and `utm_campaign`. These values can appear in traffic acquisition and user acquisition reports.
+
+## Analytics attribution preview
+
+```txt
+utm_source=google
+utm_medium=cpc
+utm_campaign=brand_search
+```
+
+In GA4, this can become source `google`, medium `cpc`, and campaign `brand_search`.
+
+## Best practices block
+
+- Use consistent medium values.
+- Separate paid and organic channels clearly.
+- Keep campaign names readable.
+- Compare engagement and conversions, not only sessions.
+- Review landing page performance by campaign.
+
+## Mistakes block
+
+- Assuming GA4 and ad platform numbers will match exactly.
+- Using inconsistent source values.
+- Forgetting to tag email, QR, and affiliate links.
+
+## Internal links
+
+Build clean campaign links with the [UTM Builder](/utm-builder), validate them with the [UTM Validator](/utm-validator), and learn more in [Campaign Tracking Guide](/campaign-tracking-guide). Glossary support: [Google Analytics](/google-analytics), [GA4](/ga4), [Campaign Attribution](/campaign-attribution).
+
+## FAQ
+
+### Does GA4 require UTMs?
+
+Not for every traffic source, but UTMs are essential for clean campaign reporting across many marketing channels.
+
+### Why do GA4 and ad platforms differ?
+
+They use different measurement windows, attribution models, filters, and event logic.
+

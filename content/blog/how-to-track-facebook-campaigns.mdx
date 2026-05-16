@@ -1,0 +1,68 @@
+---
+title: How to Track Facebook Campaigns with UTM Parameters
+description: Learn how to track Facebook campaigns in GA4 with source, medium, campaign, content, and naming conventions that keep reports clean.
+date: 2026-05-16
+updated: 2026-05-16
+category: Social Media Tracking
+tags: [facebook, social media tracking, utm, ga4]
+author: UTM Builder Editorial Team
+featuredImage: campaign-dashboard
+readingTime: 11 min read
+---
+
+## Introduction
+
+Facebook campaign tracking can become confusing because marketers often compare numbers from Meta Ads Manager with numbers from GA4. Both systems are useful, but they do not measure campaigns in exactly the same way. UTM parameters help create a cleaner bridge between Facebook clicks and website analytics.
+
+Use UTM links when you want GA4 to identify Facebook traffic by source, medium, campaign, and creative. This makes it easier to compare Facebook with Google Ads, email, YouTube, affiliates, QR codes, and organic social.
+
+## Recommended Facebook UTM structure
+
+```txt
+https://example.com/?utm_source=facebook&utm_medium=paid_social&utm_campaign=summer_sale&utm_content=carousel_ad
+```
+
+For organic posts, use a different medium:
+
+```txt
+https://example.com/?utm_source=facebook&utm_medium=organic_social&utm_campaign=summer_sale&utm_content=page_post
+```
+
+## Source and medium choices
+
+Keep `utm_source` as `facebook` for Facebook-specific reporting. Use medium to separate paid social from organic social. This avoids vague reporting where everything becomes simply `social`.
+
+## Creative tracking with utm_content
+
+Facebook campaigns often include many ads, placements, audiences, and creatives. Use `utm_content` to distinguish a carousel ad from a video ad, story placement, feed placement, or button variation. Avoid putting every detail into `utm_campaign`; campaign names should remain readable.
+
+## Best practices block
+
+- Use `facebook` as the source.
+- Use `paid_social` for paid ads and `organic_social` for unpaid posts.
+- Use campaign names that match your launch or offer.
+- Use `utm_content` for creative and placement variants.
+- Validate final links before ads go live.
+
+## Mistakes block
+
+- Using `Facebook`, `fb`, and `meta` interchangeably.
+- Treating paid social and organic social as the same medium.
+- Leaving campaign names blank.
+- Using spaces in values.
+- Forgetting to test redirects after the ad click.
+
+## Internal links
+
+Build links with the [UTM Builder](/utm-builder), audit links with the [UTM Validator](/utm-validator), and review naming guidance in [UTM Best Practices](/utm-best-practices). For attribution vocabulary, read [Campaign Attribution](/campaign-attribution) and [Traffic Source](/traffic-source).
+
+## FAQ
+
+### Can I track Facebook Ads with UTMs?
+
+Yes. UTM parameters are commonly used to track Facebook Ads traffic in GA4.
+
+### Should I use facebook or meta as the source?
+
+Pick one standard. Most teams use `facebook` for Facebook-specific campaigns and document separate naming for Instagram if needed.
+

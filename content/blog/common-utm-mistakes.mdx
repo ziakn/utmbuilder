@@ -1,0 +1,60 @@
+---
+title: Common UTM Mistakes Marketers Should Avoid
+description: Avoid fragmented reports, inconsistent capitalization, missing campaign names, spaces, duplicate parameters, and broken redirects.
+date: 2026-05-16
+updated: 2026-05-16
+category: UTM Guides
+tags: [utm mistakes, validation, ga4, campaign tracking]
+author: UTM Builder Editorial Team
+featuredImage: warning-dashboard
+readingTime: 10 min read
+---
+
+## Introduction
+
+UTM mistakes are common because campaign links are often created under deadline pressure. A marketer copies a URL from a spreadsheet, edits it by hand, sends it to an ad platform, and only notices the issue after traffic arrives in GA4. The good news is that most mistakes are predictable and preventable.
+
+## Mistake one: inconsistent capitalization
+
+Values like `Facebook`, `facebook`, and `FACEBOOK` may split reports. Use lowercase values by default.
+
+## Mistake two: missing campaign names
+
+Without `utm_campaign`, it becomes harder to compare launches, offers, and promotions.
+
+## Mistake three: spaces in values
+
+Spaces can be encoded as `%20`, but they make reports less consistent. Use `summer_sale` or `summer-sale`.
+
+## Mistake four: duplicate parameters
+
+Duplicate UTM keys can happen when a landing page already has UTMs and another tool appends more. Validate links before launch.
+
+## Examples block
+
+```txt
+Bad:  https://example.com/?utm_Source=Facebook Ads&utm_medium=Social
+Good: https://example.com/?utm_source=facebook&utm_medium=paid_social
+```
+
+## Best practices block
+
+- Validate links before publishing.
+- Decode complicated URLs before sharing them.
+- Clean old tracking values before rebuilding a link.
+- Keep a shared naming document.
+
+## Internal links
+
+Use the [UTM Validator](/utm-validator) to catch problems, the [UTM Cleaner](/utm-cleaner) to remove old parameters, and the [UTM Decoder](/utm-decoder) to inspect encoded values. Related guides include [UTM Naming Conventions](/utm-naming-conventions) and [Campaign Tracking Guide](/campaign-tracking-guide).
+
+## FAQ
+
+### Can invalid UTMs break analytics reports?
+
+They can make reports fragmented and harder to interpret.
+
+### Can I fix a published UTM link?
+
+You can update future placements, but already-collected analytics data usually remains as originally recorded.
+
