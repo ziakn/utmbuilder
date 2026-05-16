@@ -49,12 +49,12 @@ export function UtmDecoder() {
 
   return (
     <div id="decoder" className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-      <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-        <div className="flex items-center gap-2 text-sm font-semibold text-emerald-700">
+      <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="flex items-center gap-2 text-sm font-semibold text-blue-700">
           <SearchCode size={17} aria-hidden="true" />
           URL Input Section
         </div>
-        <label className="mt-5 block text-sm font-medium text-slate-700">
+        <label className="mt-5 block text-sm font-medium text-neutral-600">
           Tracking URL
           <Textarea
             className="mt-2 min-h-40 text-base"
@@ -78,13 +78,13 @@ export function UtmDecoder() {
           </Button>
         </div>
 
-        <div className={`mt-6 rounded-lg border p-4 ${decoded.hasErrors ? "border-red-200 bg-red-50 text-red-900" : decoded.hasWarnings ? "border-amber-200 bg-amber-50 text-amber-900" : "border-emerald-200 bg-emerald-50 text-emerald-900"}`}>
+        <div className={`mt-6 rounded-2xl border p-4 ${decoded.hasErrors ? "border-red-200 bg-red-50 text-red-900" : decoded.hasWarnings ? "border-amber-200 bg-amber-50 text-amber-900" : "border-blue-200 bg-blue-50 text-blue-900"}`}>
           <h2 className="font-bold">URL Structure Analysis</h2>
           <DiagnosticList diagnostics={decoded.diagnostics} />
         </div>
 
-        <div className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4">
-          <h2 className="font-bold text-slate-950">Copy Actions</h2>
+        <div className="mt-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+          <h2 className="font-bold text-neutral-900">Copy Actions</h2>
           <div className="mt-4 flex flex-wrap gap-2">
             <Button variant="secondary" onClick={() => copyText(decoded.textExport, "values")} disabled={!decoded.params.length}>
               <Copy size={16} aria-hidden="true" />
@@ -107,11 +107,11 @@ export function UtmDecoder() {
       </div>
 
       <div className="space-y-6">
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-950">Decoded Parameters</h2>
-          <div className="mt-5 overflow-x-auto rounded-lg border border-slate-200">
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+          <h2 className="text-xl font-bold text-neutral-900">Decoded Parameters</h2>
+          <div className="mt-5 overflow-x-auto rounded-2xl border border-neutral-200">
             <table className="min-w-[620px] w-full border-collapse text-sm">
-              <thead className="bg-slate-50 text-left text-slate-700">
+              <thead className="bg-neutral-50 text-left text-neutral-600">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Parameter</th>
                   <th className="px-4 py-3 font-semibold">Value</th>
@@ -121,15 +121,15 @@ export function UtmDecoder() {
               <tbody>
                 {decoded.params.length ? (
                   decoded.params.map((param) => (
-                    <tr key={`${param.key}-${param.rawValue}`} className="border-t border-slate-100">
-                      <td className="px-4 py-3 font-medium text-slate-950">{param.key}</td>
-                      <td className="break-all px-4 py-3 text-slate-700">{param.decodedValue || "Empty"}</td>
-                      <td className="px-4 py-3 text-slate-600">{param.standard ? "UTM" : "Extra"}</td>
+                    <tr key={`${param.key}-${param.rawValue}`} className="border-t border-neutral-100">
+                      <td className="px-4 py-3 font-medium text-neutral-900">{param.key}</td>
+                      <td className="font-mono break-all px-4 py-3 text-neutral-600">{param.decodedValue || "Empty"}</td>
+                      <td className="px-4 py-3 text-neutral-500">{param.standard ? "UTM" : "Extra"}</td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td className="px-4 py-6 text-slate-600" colSpan={3}>
+                    <td className="px-4 py-6 text-neutral-500" colSpan={3}>
                       No tracking parameters found.
                     </td>
                   </tr>
@@ -139,37 +139,37 @@ export function UtmDecoder() {
           </div>
           <div className="mt-4 grid gap-3 md:hidden">
             {decoded.params.map((param) => (
-              <details key={`card-${param.key}-${param.rawValue}`} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-                <summary className="cursor-pointer font-semibold text-slate-950">{param.key}</summary>
-                <p className="mt-3 break-all text-sm leading-6 text-slate-600">{param.decodedValue || "Empty"}</p>
+              <details key={`card-${param.key}-${param.rawValue}`} className="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+                <summary className="cursor-pointer font-semibold text-neutral-900">{param.key}</summary>
+                <p className="mt-3 font-mono break-all text-sm leading-6 text-neutral-500">{param.decodedValue || "Empty"}</p>
               </details>
             ))}
           </div>
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
-          <h2 className="text-xl font-bold text-slate-950">Human Readable Summary</h2>
-          <p className="mt-3 text-sm leading-6 text-slate-600">{decoded.summary}</p>
+        <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
+          <h2 className="text-xl font-bold text-neutral-900">Human Readable Summary</h2>
+          <p className="mt-3 text-sm leading-6 text-neutral-500">{decoded.summary}</p>
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-950">Analytics Attribution Preview</h2>
-          <div className="mt-5 overflow-hidden rounded-lg border border-slate-200">
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+          <h2 className="text-xl font-bold text-neutral-900">Analytics Attribution Preview</h2>
+          <div className="mt-5 overflow-hidden rounded-2xl border border-neutral-200">
             {[
               ["Session Source", decoded.utm.utm_source || "Not set"],
               ["Session Medium", decoded.utm.utm_medium || "Not set"],
               ["Campaign", decoded.utm.utm_campaign || "Not set"],
             ].map(([label, value]) => (
-              <div key={label} className="grid grid-cols-[150px_1fr] border-b border-slate-100 px-4 py-3 text-sm last:border-b-0">
-                <span className="font-medium text-slate-950">{label}</span>
-                <span className="break-all text-slate-600">{value}</span>
+              <div key={label} className="grid grid-cols-[150px_1fr] border-b border-neutral-100 px-4 py-3 text-sm last:border-b-0">
+                <span className="font-medium text-neutral-900">{label}</span>
+                <span className="font-mono break-all text-neutral-500">{value}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-950">Encoded URL Decoder</h2>
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+          <h2 className="text-xl font-bold text-neutral-900">Encoded URL Decoder</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {[
               ["summer%20sale", safeDecode("summer%20sale")],
@@ -177,17 +177,17 @@ export function UtmDecoder() {
               ["%3A", safeDecode("%3A")],
               ["%26", safeDecode("%26")],
             ].map(([encoded, plain]) => (
-              <div key={encoded} className="rounded-md border border-slate-200 bg-slate-50 p-3 text-sm">
-                <code className="text-slate-950">{encoded}</code>
-                <span className="mx-2 text-slate-400">to</span>
-                <code className="text-emerald-700">{plain}</code>
+              <div key={encoded} className="rounded-xl border border-neutral-200 bg-neutral-50 p-3 text-sm">
+                <code className="text-neutral-900">{encoded}</code>
+                <span className="mx-2 text-neutral-400">to</span>
+                <code className="text-blue-700">{plain}</code>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-neutral-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-md gap-2">
           <Button className="flex-1" onClick={() => setInput(input.trim())}>
             Decode
@@ -298,7 +298,7 @@ function DiagnosticList({ diagnostics }: { diagnostics: Diagnostic[] }) {
   return (
     <div className="mt-4 space-y-2">
       {diagnostics.map((item) => (
-        <div key={`${item.title}-${item.detail}`} className="rounded-md bg-white/70 p-3 text-sm">
+        <div key={`${item.title}-${item.detail}`} className="rounded-xl bg-white/70 p-3 text-sm">
           <p className="font-semibold">{item.title}</p>
           <p className="mt-1 leading-6">{item.detail}</p>
         </div>

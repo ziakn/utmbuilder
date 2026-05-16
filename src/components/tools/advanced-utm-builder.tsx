@@ -131,13 +131,13 @@ export function AdvancedUtmBuilder() {
 
   return (
     <div id="builder" className="grid gap-6 lg:grid-cols-[1fr_0.9fr]">
-      <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-        <div className="flex items-center gap-2 text-sm font-semibold text-emerald-700">
+      <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="flex items-center gap-2 text-sm font-semibold text-blue-700">
           <Link2 size={17} aria-hidden="true" />
           Main UTM Builder Form
         </div>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <label className="sm:col-span-2 text-sm font-medium text-slate-700">
+          <label className="sm:col-span-2 text-sm font-medium text-neutral-600">
             Website URL
             <Input className="mt-2 h-12" placeholder="https://example.com" value={values.websiteUrl} onChange={(event) => update("websiteUrl", event.target.value)} />
           </label>
@@ -149,12 +149,12 @@ export function AdvancedUtmBuilder() {
         </div>
 
         <div className="mt-6">
-          <h3 className="text-sm font-semibold text-slate-950">Preset templates</h3>
+          <h3 className="text-sm font-semibold text-neutral-900">Preset templates</h3>
           <div className="mt-3 flex flex-wrap gap-2">
             {presets.map((preset) => (
               <button
                 key={preset.label}
-                className="rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                className="rounded-xl border border-neutral-200 px-3 py-2 text-sm font-medium text-neutral-600 hover:bg-neutral-50"
                 type="button"
                 onClick={() => setValues((current) => ({ ...current, ...preset.values }))}
               >
@@ -185,14 +185,14 @@ export function AdvancedUtmBuilder() {
       </div>
 
       <div className="space-y-6">
-        <div className="rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm">
+        <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 shadow-sm">
           <div className="flex items-center justify-between gap-3">
-            <h2 className="text-lg font-bold text-slate-950">Live URL Preview</h2>
-            <span className={`rounded-md px-2.5 py-1 text-xs font-semibold ${validation.errors.length ? "bg-red-50 text-red-700" : "bg-emerald-50 text-emerald-700"}`}>
+            <h2 className="text-lg font-bold text-neutral-900">Live URL Preview</h2>
+            <span className={`rounded-xl px-2.5 py-1 text-xs font-semibold ${validation.errors.length ? "bg-red-50 text-red-700" : "bg-blue-50 text-blue-700"}`}>
               {validation.errors.length ? "Fix required" : "Ready"}
             </span>
           </div>
-          <pre className="mt-4 min-h-28 whitespace-pre-wrap break-all rounded-md border border-slate-200 bg-white p-4 text-sm leading-6 text-slate-700">
+          <pre className="mt-4 min-h-28 whitespace-pre-wrap font-mono break-all rounded-xl border border-neutral-200 bg-white p-4 text-sm leading-6 text-neutral-600">
             {result || "Enter a valid HTTPS website URL to generate a tracking URL."}
           </pre>
           <ValidationList title="Warnings" items={validation.warnings} tone="warning" />
@@ -200,13 +200,13 @@ export function AdvancedUtmBuilder() {
           <ValidationList title="Fixes needed" items={validation.errors} tone="error" />
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
           <div className="flex items-center gap-2">
-            <QrCode size={18} className="text-emerald-700" aria-hidden="true" />
-            <h2 className="text-lg font-bold text-slate-950">QR Code Section</h2>
+            <QrCode size={18} className="text-blue-700" aria-hidden="true" />
+            <h2 className="text-lg font-bold text-neutral-900">QR Code Section</h2>
           </div>
           <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:items-center">
-            <div className="flex min-h-56 min-w-56 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 p-3">
+            <div className="flex min-h-56 min-w-56 items-center justify-center rounded-2xl border border-neutral-200 bg-neutral-50 p-3">
               <canvas ref={canvasRef} aria-label="Mobile preview of generated QR code" />
             </div>
             <div className="flex flex-1 flex-col gap-3">
@@ -222,13 +222,13 @@ export function AdvancedUtmBuilder() {
                 <Copy size={16} aria-hidden="true" />
                 <span className="ml-2">{copied === "qr" ? "Copied" : "Copy QR image"}</span>
               </Button>
-              <p className="text-sm leading-6 text-slate-600">Mobile preview updates automatically as you type.</p>
+              <p className="text-sm leading-6 text-neutral-500">Mobile preview updates automatically as you type.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-neutral-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-md gap-2">
           <Button className="flex-1" onClick={() => copyText(result, "mobile")} disabled={!result}>
             Generate URL
@@ -315,10 +315,10 @@ function Field({
   className?: string;
 }) {
   return (
-    <label className={`text-sm font-medium text-slate-700 ${className}`}>
+    <label className={`text-sm font-medium text-neutral-600 ${className}`}>
       {label}
       <Input className="mt-2 h-12" value={value} onChange={(event) => onChange(event.target.value)} />
-      <span className="mt-1 block text-xs leading-5 text-slate-500">{examples}</span>
+      <span className="mt-1 block text-xs leading-5 text-neutral-500">{examples}</span>
     </label>
   );
 }
@@ -337,11 +337,11 @@ function ValidationList({
   const styles = {
     error: "border-red-200 bg-red-50 text-red-800",
     warning: "border-amber-200 bg-amber-50 text-amber-800",
-    info: "border-slate-200 bg-white text-slate-700",
+    info: "border-neutral-200 bg-white text-neutral-600",
   };
 
   return (
-    <div className={`mt-4 rounded-md border p-3 ${styles[tone]}`}>
+    <div className={`mt-4 rounded-xl border p-3 ${styles[tone]}`}>
       <p className="text-sm font-semibold">{title}</p>
       <ul className="mt-2 space-y-1 text-sm leading-6">
         {items.map((item) => (

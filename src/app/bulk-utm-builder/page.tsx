@@ -46,7 +46,7 @@ const internalLinks = [
   ["Campaign tracking guide", "/campaign-tracking-guide"],
 ];
 
-const faqs = [
+const faqs: [string, string][] = [
   ["What is a bulk UTM builder?", "A bulk UTM builder generates many UTM-tagged campaign URLs at once from rows, pasted CSV data, or campaign templates."],
   ["Can I upload CSV files?", "This static version supports CSV paste. Paste rows with url, source, medium, campaign, term, and content columns, then generate links instantly."],
   ["Does GA4 support bulk UTM links?", "Yes. GA4 reads UTM parameters from every tagged URL, whether you create one link or hundreds of campaign links."],
@@ -73,27 +73,27 @@ export default function BulkUtmBuilderPage() {
           { name: "Bulk UTM Builder", item: absoluteUrl("/bulk-utm-builder") },
         ]}
       />
-      <Section className="border-b border-slate-200 bg-white pb-10">
+      <Section className="border-b border-neutral-200 bg-white pb-10">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Spreadsheet UTM generator</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">Spreadsheet UTM generator</p>
+            <h1 className="mt-4 max-w-3xl text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-neutral-900">
               Bulk UTM Builder for Marketing Campaigns
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mt-5 max-w-2xl text-base md:text-lg leading-8 text-neutral-500">
               Generate multiple campaign tracking URLs instantly for Google Analytics, GA4, email marketing, paid ads, affiliate campaigns, and social media tracking.
             </p>
-            <Link href="#bulk-tool" className="mt-8 inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800">
+            <Link href="#bulk-tool" className="mt-8 inline-flex h-12 items-center justify-center rounded-xl bg-neutral-900 px-5 text-sm font-semibold text-white hover:bg-neutral-800">
               Start Bulk Builder
               <ArrowRight className="ml-2" size={17} aria-hidden="true" />
             </Link>
           </div>
-          <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-5">
-            <h2 className="text-xl font-bold text-slate-950">Built for teams that publish many links</h2>
-            <p className="mt-3 text-sm leading-6 text-slate-700">
+          <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+            <h2 className="text-xl font-bold text-neutral-900">Built for teams that publish many links</h2>
+            <p className="mt-3 text-sm leading-6 text-neutral-600">
               Use manual entry, CSV paste, or a spreadsheet-like table to create campaign URLs, validate naming issues, export files, and prepare QR assets without a backend.
             </p>
-            <div className="mt-5 grid gap-3 text-sm font-medium text-emerald-900 sm:grid-cols-2">
+            <div className="mt-5 grid gap-3 text-sm font-medium text-blue-900 sm:grid-cols-2">
               <span>Dynamic rows</span>
               <span>Inline validation</span>
               <span>CSV parsing</span>
@@ -109,17 +109,17 @@ export default function BulkUtmBuilderPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="Real use cases" title="Why teams use bulk UTM generation" />
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {useCases.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-                  <Icon size={22} className="text-emerald-700" aria-hidden="true" />
-                  <h3 className="mt-4 font-bold text-slate-950">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{item.text}</p>
+                <div key={item.title} className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+                  <Icon size={22} className="text-blue-700" aria-hidden="true" />
+                  <h3 className="mt-4 font-bold text-neutral-900">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-neutral-500">{item.text}</p>
                 </div>
               );
             })}
@@ -134,12 +134,12 @@ export default function BulkUtmBuilderPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="Internal links" title="Plan, validate, and improve your UTM system" />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {internalLinks.map(([label, href]) => (
-              <Link key={href} href={href} className="rounded-lg border border-slate-200 bg-white p-5 text-sm font-semibold text-slate-700 shadow-sm hover:text-slate-950 hover:shadow-md">
+              <Link key={href} href={href} className="rounded-2xl border border-neutral-200 bg-white p-5 text-sm font-semibold text-neutral-600 shadow-sm hover:text-neutral-900 hover:shadow-md">
                 {label}
               </Link>
             ))}
@@ -152,9 +152,9 @@ export default function BulkUtmBuilderPage() {
           <SectionHeader eyebrow="FAQ" title="Bulk UTM builder questions" />
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {faqs.map(([question, answer]) => (
-              <details key={question} className="rounded-lg border border-slate-200 bg-white p-5">
-                <summary className="cursor-pointer font-semibold text-slate-950">{question}</summary>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{answer}</p>
+              <details key={question} className="rounded-2xl border border-neutral-200 bg-white p-5">
+                <summary className="cursor-pointer font-semibold text-neutral-900">{question}</summary>
+                <p className="mt-3 text-sm leading-6 text-neutral-500">{answer}</p>
               </details>
             ))}
           </div>
@@ -167,15 +167,15 @@ export default function BulkUtmBuilderPage() {
 function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">{eyebrow}</p>
-      <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-slate-950">{title}</h2>
+      <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">{eyebrow}</p>
+      <h2 className="mt-3 max-w-3xl text-3xl md:text-4xl font-semibold leading-tight text-neutral-900">{title}</h2>
     </div>
   );
 }
 
 function EducationalContent() {
   return (
-    <div className="mt-8 space-y-6 text-base leading-8 text-slate-600">
+    <div className="mt-8 space-y-6 text-base md:text-lg leading-8 text-neutral-500">
       <p>
         Bulk UTM generation matters when marketing work moves beyond one campaign link at a time. A small team might build a few links manually for a newsletter or a paid social post, but agencies, PPC teams, affiliate managers, creators, ecommerce teams, and enterprise marketers often need dozens or hundreds of tracked URLs before a launch. A bulk UTM builder turns that repetitive work into a structured process. Instead of editing one URL, copying it, and repeating the same naming decisions again and again, teams can create rows, paste campaign data, apply templates, validate issues, and export the final tracking URLs in formats that fit their workflow.
       </p>

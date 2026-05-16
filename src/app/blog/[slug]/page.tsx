@@ -67,12 +67,12 @@ export default async function BlogPostPage({ params }: Props) {
           { name: post.title, item: absoluteUrl(`/blog/${post.slug}`) },
         ]}
       />
-      <Section className="border-b border-slate-200 bg-white pb-10">
+      <Section className="border-b border-neutral-200 bg-white pb-10">
         <Container>
-          <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">{post.category}</p>
-          <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">{post.title}</h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{post.description}</p>
-          <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-600">
+          <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">{post.category}</p>
+          <h1 className="mt-3 max-w-4xl text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-neutral-900">{post.title}</h1>
+          <p className="mt-5 max-w-3xl text-base md:text-lg leading-8 text-neutral-500">{post.description}</p>
+          <div className="mt-6 flex flex-wrap gap-3 text-sm text-neutral-500">
             <span>Published {post.date}</span>
             <span>Updated {post.updated}</span>
             <span>{post.readingTime}</span>
@@ -84,7 +84,7 @@ export default async function BlogPostPage({ params }: Props) {
       <Section>
         <Container className="grid gap-12 lg:grid-cols-[1fr_300px]">
           <article className="min-w-0">
-            <div className="aspect-[16/9] rounded-lg border border-slate-200 bg-[linear-gradient(135deg,#ecfdf5,#f8fafc_45%,#dbeafe)]" aria-label={post.featuredImage} />
+            <div className="aspect-[16/9] rounded-2xl border border-neutral-200 bg-[linear-gradient(135deg,#ecfdf5,#f8fafc_45%,#dbeafe)]" aria-label={post.featuredImage} />
             <div className="mt-10">
               <MdxContent body={post.body} />
             </div>
@@ -94,14 +94,14 @@ export default async function BlogPostPage({ params }: Props) {
 
           <aside className="hidden lg:block">
             <div className="sticky top-24 space-y-6">
-              <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
-                <h2 className="font-bold text-slate-950">Table of contents</h2>
+              <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
+                <h2 className="font-bold text-neutral-900">Table of contents</h2>
                 <nav className="mt-4 space-y-2">
                   {post.headings.map((heading) => (
                     <a
                       key={heading.id}
                       href={`#${heading.id}`}
-                      className={`block text-sm leading-6 text-slate-600 hover:text-slate-950 ${heading.level === 3 ? "pl-4" : ""}`}
+                      className={`block text-sm leading-6 text-neutral-500 hover:text-neutral-900 ${heading.level === 3 ? "pl-4" : ""}`}
                     >
                       {heading.text}
                     </a>
@@ -114,15 +114,15 @@ export default async function BlogPostPage({ params }: Props) {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
-          <h2 className="text-3xl font-bold text-slate-950">Related articles</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900">Related articles</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {related.map((item) => (
-              <Link key={item.slug} href={`/blog/${item.slug}`} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md">
-                <p className="text-sm font-semibold text-emerald-700">{item.category}</p>
-                <h3 className="mt-2 font-bold leading-tight text-slate-950">{item.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{item.description}</p>
+              <Link key={item.slug} href={`/blog/${item.slug}`} className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md">
+                <p className="text-sm font-semibold text-blue-700">{item.category}</p>
+                <h3 className="mt-2 font-bold leading-tight text-neutral-900">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-neutral-500">{item.description}</p>
               </Link>
             ))}
           </div>
@@ -150,7 +150,7 @@ function CtaBlocks() {
   return (
     <div className="mt-12 grid gap-4 md:grid-cols-2">
       {links.map(([label, href]) => (
-        <Link key={href} href={href} className="rounded-lg border border-emerald-200 bg-emerald-50 p-5 font-semibold text-emerald-900 hover:bg-emerald-100">
+        <Link key={href} href={href} className="rounded-2xl border border-blue-200 bg-blue-50 p-5 font-semibold text-blue-900 hover:bg-blue-100">
           {label}
         </Link>
       ))}
@@ -166,11 +166,11 @@ function SidebarLinks() {
     ["Campaign Attribution", "/campaign-attribution"],
   ];
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-5">
-      <h2 className="font-bold text-slate-950">Useful links</h2>
+    <div className="rounded-2xl border border-neutral-200 bg-white p-5">
+      <h2 className="font-bold text-neutral-900">Useful links</h2>
       <div className="mt-4 space-y-2">
         {links.map(([label, href]) => (
-          <Link key={href} href={href} className="block text-sm font-medium text-slate-700 hover:text-slate-950">
+          <Link key={href} href={href} className="block text-sm font-medium text-neutral-600 hover:text-neutral-900">
             {label}
           </Link>
         ))}
@@ -181,9 +181,9 @@ function SidebarLinks() {
 
 function AuthorBox({ post }: { post: ReturnType<typeof getPostBySlug> }) {
   return (
-    <div className="mt-12 rounded-lg border border-slate-200 bg-slate-50 p-5">
-      <h2 className="font-bold text-slate-950">{post.author}</h2>
-      <p className="mt-2 text-sm leading-6 text-slate-600">
+    <div className="mt-12 rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
+      <h2 className="font-bold text-neutral-900">{post.author}</h2>
+      <p className="mt-2 text-sm leading-6 text-neutral-500">
         Practical campaign tracking, GA4 reporting, attribution, and UTM governance guidance from the UTM Builder editorial team.
       </p>
     </div>

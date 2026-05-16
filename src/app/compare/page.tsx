@@ -14,15 +14,15 @@ export default function ComparePage() {
   return (
     <Section>
       <Container>
-        <h1 className="text-4xl font-bold text-slate-950">UTM tool comparisons</h1>
-        <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-neutral-900">UTM tool comparisons</h1>
+        <p className="mt-5 max-w-3xl text-base md:text-lg leading-8 text-neutral-500">
           Compare lightweight UTM workflows for single links, bulk campaign launches, QA checks, decoded URLs, and clean shareable links.
         </p>
-        <div className="mt-10 overflow-hidden rounded-lg border border-slate-200">
+        <div className="mt-10 overflow-hidden rounded-2xl border border-neutral-200">
           {tools.map((tool) => (
-            <Link key={tool.slug} href={`/tools/${tool.slug}`} className="grid gap-2 border-b border-slate-200 p-5 last:border-b-0 md:grid-cols-[220px_1fr]">
-              <span className="font-semibold text-slate-950">{tool.name}</span>
-              <span className="text-sm leading-6 text-slate-600">{tool.description}</span>
+            <Link key={tool.slug} href={`/tools/${tool.slug}`} className="grid gap-2 border-b border-neutral-200 p-5 last:border-b-0 md:grid-cols-[220px_1fr]">
+              <span className="font-semibold text-neutral-900">{tool.name}</span>
+              <span className="text-sm leading-6 text-neutral-500">{tool.description}</span>
             </Link>
           ))}
         </div>

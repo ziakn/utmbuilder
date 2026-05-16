@@ -80,7 +80,7 @@ const glossaryLinks = [
   ["Conversion Rate", "/conversion-rate"],
 ];
 
-const faqs = [
+const faqs: [string, string][] = [
   ["What is a UTM builder?", "A UTM builder is a tool that adds campaign tracking parameters to a website URL so analytics platforms can identify the source, medium, campaign, keyword, and content associated with a visit."],
   ["Is this UTM builder free?", "Yes. The UTM builder is free to use and runs in your browser without requiring an account."],
   ["Do UTM links work with GA4?", "Yes. GA4 reads UTM parameters and uses them in acquisition and campaign reports when visitors arrive through tagged links."],
@@ -105,29 +105,29 @@ export default function Home() {
       />
       <BreadcrumbSchema items={[{ name: "Home", item: siteConfig.url }]} />
       <FAQSchema faqs={faqs} />
-      <Section className="border-b border-slate-200 bg-white pb-10">
+      <Section className="border-b border-neutral-200 bg-white pb-10">
         <Container className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Free UTM builder</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">Free UTM builder</p>
+            <h1 className="mt-4 max-w-3xl text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-neutral-900">
               Free UTM Builder for Campaign Tracking
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mt-5 max-w-2xl text-base md:text-lg leading-8 text-neutral-500">
               Create clean, trackable campaign URLs for Google Analytics, GA4, email marketing, social media, ads, and affiliate campaigns.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link className="inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800" href="#homepage-builder">
+              <Link className="inline-flex h-12 items-center justify-center rounded-xl bg-neutral-900 px-5 text-sm font-semibold text-white hover:bg-neutral-800" href="#homepage-builder">
                 Build UTM Link
                 <ArrowRight className="ml-2" size={17} aria-hidden="true" />
               </Link>
-              <Link className="inline-flex h-12 items-center justify-center rounded-md border border-slate-200 px-5 text-sm font-semibold text-slate-950 hover:bg-slate-50" href="/utm-examples">
+              <Link className="inline-flex h-12 items-center justify-center rounded-xl border border-neutral-200 px-5 text-sm font-semibold text-neutral-900 hover:bg-neutral-50" href="/utm-examples">
                 View Examples
               </Link>
             </div>
-            <div className="mt-8 grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
+            <div className="mt-8 grid gap-3 text-sm text-neutral-600 sm:grid-cols-2">
               {["No signup required", "Static and fast", "GA4-ready links", "Built for marketers"].map((item) => (
                 <span key={item} className="flex gap-2">
-                  <CheckCircle2 className="mt-0.5 shrink-0 text-emerald-600" size={17} aria-hidden="true" />
+                  <CheckCircle2 className="mt-0.5 shrink-0 text-blue-600" size={17} aria-hidden="true" />
                   {item}
                 </span>
               ))}
@@ -140,7 +140,7 @@ export default function Home() {
       <Section>
         <Container>
           <SectionHeader eyebrow="Popular tools" title="Campaign tracking tools for everyday marketing workflows" />
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {popularTools.map(([name, href, description]) => (
               <ToolCard key={href} name={name} href={href} description={description} />
             ))}
@@ -148,14 +148,14 @@ export default function Home() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="How it works" title="From landing page to trackable campaign URL" />
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {steps.map((step, index) => (
-              <div key={step} className="rounded-lg border border-slate-200 bg-white p-5">
-                <span className="flex size-9 items-center justify-center rounded-md bg-emerald-600 text-sm font-bold text-white">{index + 1}</span>
-                <h3 className="mt-4 font-semibold text-slate-950">{step}</h3>
+              <div key={step} className="rounded-2xl border border-neutral-200 bg-white p-5">
+                <span className="flex size-9 items-center justify-center rounded-xl bg-blue-600 text-sm font-bold text-white">{index + 1}</span>
+                <h3 className="mt-4 font-semibold text-neutral-900">{step}</h3>
               </div>
             ))}
           </div>
@@ -167,7 +167,7 @@ export default function Home() {
           <SectionHeader eyebrow="Use cases" title="Track the channels that matter most" />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {useCases.map(([name, href]) => (
-              <Link key={href} href={href} className="rounded-lg border border-slate-200 bg-white p-5 text-sm font-semibold text-slate-700 shadow-sm hover:text-slate-950 hover:shadow-md">
+              <Link key={href} href={href} className="rounded-2xl border border-neutral-200 bg-white p-5 text-sm font-semibold text-neutral-600 shadow-sm hover:text-neutral-900 hover:shadow-md">
                 {name}
               </Link>
             ))}
@@ -175,18 +175,18 @@ export default function Home() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="UTM examples" title="Example campaign URLs you can adapt" />
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {examples.map(([label, url]) => (
-              <div key={label} className="rounded-lg border border-slate-200 bg-white p-5">
-                <h3 className="font-semibold text-slate-950">{label}</h3>
-                <p className="mt-3 break-all rounded-md bg-slate-50 p-3 text-sm leading-6 text-slate-600">{url}</p>
+              <div key={label} className="rounded-2xl border border-neutral-200 bg-white p-5">
+                <h3 className="font-semibold text-neutral-900">{label}</h3>
+                <p className="mt-3 font-mono break-all rounded-xl bg-neutral-50 p-3 text-sm leading-6 text-neutral-500">{url}</p>
               </div>
             ))}
           </div>
-          <Link href="/utm-examples" className="mt-6 inline-flex text-sm font-semibold text-emerald-700 hover:text-emerald-900">
+          <Link href="/utm-examples" className="mt-6 inline-flex text-sm font-semibold text-blue-700 hover:text-blue-900">
             View all UTM examples
           </Link>
         </Container>
@@ -195,7 +195,7 @@ export default function Home() {
       <Section>
         <Container className="max-w-4xl">
           <SectionHeader eyebrow="Campaign tracking education" title="Why UTM parameters make marketing analytics clearer" />
-          <div className="mt-8 space-y-6 text-base leading-8 text-slate-600">
+          <div className="mt-8 space-y-6 text-base md:text-lg leading-8 text-neutral-500">
             <p>
               UTM parameters are small pieces of tracking information added to the end of a URL. They tell analytics tools where a visitor came from, which channel brought the click, and which campaign should receive credit. A normal landing page URL may show that someone visited a page, but a UTM-tagged URL can show whether the visit came from a Facebook ad, a Google Ads search campaign, an email newsletter, a YouTube description link, an affiliate partner, or a QR code printed at an event.
             </p>
@@ -221,7 +221,7 @@ export default function Home() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container className="grid gap-10 lg:grid-cols-2">
           <LinkGroup title="Featured guides" items={featuredGuides} />
           <LinkGroup title="Glossary" items={glossaryLinks} />
@@ -233,9 +233,9 @@ export default function Home() {
           <SectionHeader eyebrow="FAQ" title="UTM builder questions" />
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {faqs.map(([question, answer]) => (
-              <details key={question} className="rounded-lg border border-slate-200 bg-white p-5">
-                <summary className="cursor-pointer font-semibold text-slate-950">{question}</summary>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{answer}</p>
+              <details key={question} className="rounded-2xl border border-neutral-200 bg-white p-5">
+                <summary className="cursor-pointer font-semibold text-neutral-900">{question}</summary>
+                <p className="mt-3 text-sm leading-6 text-neutral-500">{answer}</p>
               </details>
             ))}
           </div>
@@ -248,18 +248,18 @@ export default function Home() {
 function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">{eyebrow}</p>
-      <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-slate-950">{title}</h2>
+      <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">{eyebrow}</p>
+      <h2 className="mt-3 max-w-3xl text-3xl md:text-4xl font-semibold leading-tight text-neutral-900">{title}</h2>
     </div>
   );
 }
 
 function ToolCard({ name, href, description }: { name: string; href: string; description: string }) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-      <h3 className="text-lg font-semibold text-slate-950">{name}</h3>
-      <p className="mt-3 min-h-20 text-sm leading-6 text-slate-600">{description}</p>
-      <Link href={href} className="mt-5 inline-flex h-10 items-center justify-center rounded-md border border-slate-200 px-3 text-sm font-semibold text-slate-950 hover:bg-slate-50">
+    <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+      <h3 className="text-lg font-semibold text-neutral-900">{name}</h3>
+      <p className="mt-3 min-h-20 text-sm leading-6 text-neutral-500">{description}</p>
+      <Link href={href} className="mt-5 inline-flex h-10 items-center justify-center rounded-xl border border-neutral-200 px-3 text-sm font-semibold text-neutral-900 hover:bg-neutral-50">
         Open tool
       </Link>
     </div>
@@ -269,17 +269,14 @@ function ToolCard({ name, href, description }: { name: string; href: string; des
 function LinkGroup({ title, items }: { title: string; items: string[][] }) {
   return (
     <div>
-      <h2 className="text-2xl font-bold text-slate-950">{title}</h2>
+      <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900">{title}</h2>
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
         {items.map(([label, href]) => (
-          <Link key={href} href={href} className="rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 hover:text-slate-950">
+          <Link key={href} href={href} className="rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm font-medium text-neutral-600 hover:text-neutral-900">
             {label}
           </Link>
         ))}
       </div>
     </div>
-  );
-}
-
   );
 }

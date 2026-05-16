@@ -12,8 +12,8 @@ export default function TermsPage() {
   return (
     <Section>
       <Container className="max-w-3xl">
-        <h1 className="text-4xl font-bold text-slate-950">Terms of Use</h1>
-        <div className="mt-8 space-y-6 leading-7 text-slate-600">
+        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-neutral-900">Terms of Use</h1>
+        <div className="mt-8 space-y-6 leading-7 text-neutral-500">
           <p>These free tools are provided for campaign planning, education, and marketing analytics support.</p>
           <p>You are responsible for checking final campaign URLs, naming conventions, analytics settings, and compliance requirements before publishing links.</p>
           <p>The educational content is general information and should be adapted to your business, platform, and reporting setup.</p>

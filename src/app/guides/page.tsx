@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 export default function GuidesPage() {
   return (
     <>
-      <Section className="border-b border-slate-200 bg-slate-50">
+      <Section className="border-b border-neutral-200 bg-neutral-50">
         <Container>
-          <h1 className="text-4xl font-bold text-slate-950">Marketing tracking guides</h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-neutral-900">Marketing tracking guides</h1>
+          <p className="mt-5 max-w-3xl text-base md:text-lg leading-8 text-neutral-500">
             Educational pages designed for long-tail search intent: naming conventions, launch checks, attribution basics, and analytics cleanup.
           </p>
         </Container>
@@ -24,22 +24,22 @@ export default function GuidesPage() {
       <Section>
         <Container className="grid gap-5 md:grid-cols-3">
           {guides.map((guide) => (
-            <article key={guide.slug} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-              <h2 className="text-xl font-bold text-slate-950">{guide.title}</h2>
-              <p className="mt-4 text-sm leading-6 text-slate-600">{guide.description}</p>
-              <Link href="/blog/utm-tracking-basics" className="mt-5 inline-block text-sm font-semibold text-emerald-700">
+            <article key={guide.slug} className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+              <h2 className="text-xl font-bold text-neutral-900">{guide.title}</h2>
+              <p className="mt-4 text-sm leading-6 text-neutral-500">{guide.description}</p>
+              <Link href="/blog/utm-tracking-basics" className="mt-5 inline-block text-sm font-semibold text-blue-700">
                 Read related article
               </Link>
             </article>
           ))}
         </Container>
       </Section>
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
-          <h2 className="text-2xl font-bold text-slate-950">Recommended tools</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900">Recommended tools</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {tools.slice(0, 3).map((tool) => (
-              <Link key={tool.slug} href={`/tools/${tool.slug}`} className="rounded-md border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 hover:text-slate-950">
+              <Link key={tool.slug} href={`/tools/${tool.slug}`} className="rounded-xl border border-neutral-200 bg-white p-4 text-sm font-semibold text-neutral-600 hover:text-neutral-900">
                 {tool.name}
               </Link>
             ))}

@@ -118,11 +118,11 @@ export default async function SeoPage({ params }: Props) {
           { name: page.title, item: pageUrl },
         ]}
       />
-      <Section className="border-b border-slate-200 bg-slate-50">
+      <Section className="border-b border-neutral-200 bg-neutral-50">
         <Container>
-          <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">{labelFor(page.category)}</p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight text-slate-950">{page.title}</h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">{page.description}</p>
+          <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">{labelFor(page.category)}</p>
+          <h1 className="mt-3 max-w-3xl text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-neutral-900">{page.title}</h1>
+          <p className="mt-5 max-w-3xl text-base md:text-lg leading-8 text-neutral-500">{page.description}</p>
         </Container>
       </Section>
 
@@ -137,38 +137,38 @@ export default async function SeoPage({ params }: Props) {
       <Section>
         <Container className="grid gap-10 lg:grid-cols-[1fr_320px]">
           <article className="max-w-3xl">
-            <h2 className="text-2xl font-bold text-slate-950">{sectionTitle(page.category, page.title)}</h2>
-            <p className="mt-4 leading-7 text-slate-600">{page.intent}</p>
+            <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900">{sectionTitle(page.category, page.title)}</h2>
+            <p className="mt-4 leading-7 text-neutral-500">{page.intent}</p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {contentPoints(page.category).map((point) => (
-                <div key={point} className="rounded-lg border border-slate-200 bg-white p-5 text-sm leading-6 text-slate-600 shadow-sm">
+                <div key={point} className="rounded-2xl border border-neutral-200 bg-white p-5 text-sm leading-6 text-neutral-500 shadow-sm">
                   {point}
                 </div>
               ))}
             </div>
-            <h2 className="mt-10 text-2xl font-bold text-slate-950">Recommended workflow</h2>
-            <p className="mt-4 leading-7 text-slate-600">
+            <h2 className="mt-10 text-3xl md:text-4xl font-semibold text-neutral-900">Recommended workflow</h2>
+            <p className="mt-4 leading-7 text-neutral-500">
               Start with a clear destination URL, choose lowercase campaign values, keep source and medium consistent, validate the final link, and document the naming pattern before publishing.
             </p>
           </article>
 
           <aside className="space-y-6">
-            <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
-              <h2 className="font-bold text-slate-950">Core tools</h2>
+            <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
+              <h2 className="font-bold text-neutral-900">Core tools</h2>
               <div className="mt-4 space-y-2">
                 {tools.slice(0, 5).map((tool) => (
-                  <Link key={tool.slug} href={`/${tool.slug}`} className="block text-sm font-medium text-slate-700 hover:text-slate-950">
+                  <Link key={tool.slug} href={`/${tool.slug}`} className="block text-sm font-medium text-neutral-600 hover:text-neutral-900">
                     {tool.name}
                   </Link>
                 ))}
               </div>
             </div>
             {related.length > 0 ? (
-              <div className="rounded-lg border border-slate-200 bg-white p-5">
-                <h2 className="font-bold text-slate-950">Related pages</h2>
+              <div className="rounded-2xl border border-neutral-200 bg-white p-5">
+                <h2 className="font-bold text-neutral-900">Related pages</h2>
                 <div className="mt-4 space-y-2">
                   {related.map((item) => (
-                    <Link key={item.slug} href={`/${item.slug}`} className="block text-sm font-medium text-slate-700 hover:text-slate-950">
+                    <Link key={item.slug} href={`/${item.slug}`} className="block text-sm font-medium text-neutral-600 hover:text-neutral-900">
                       {item.title}
                     </Link>
                   ))}

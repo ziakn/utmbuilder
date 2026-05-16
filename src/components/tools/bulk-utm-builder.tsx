@@ -144,13 +144,13 @@ export function BulkUtmBuilder() {
 
   return (
     <div id="bulk-tool" className="space-y-6">
-      <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+      <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
         <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
           <div>
-            <p className="text-sm font-semibold text-emerald-700">Bulk Input Section</p>
-            <h2 className="mt-1 text-2xl font-bold text-slate-950">Generate many UTM URLs at once</h2>
+            <p className="text-sm font-semibold text-blue-700">Bulk Input Section</p>
+            <h2 className="mt-1 text-3xl md:text-4xl font-semibold text-neutral-900">Generate many UTM URLs at once</h2>
           </div>
-          <div className="flex rounded-lg border border-slate-200 bg-slate-50 p-1">
+          <div className="flex rounded-2xl border border-neutral-200 bg-neutral-50 p-1">
             {[
               ["manual", "Manual Entry"],
               ["csv", "CSV Paste"],
@@ -159,7 +159,7 @@ export function BulkUtmBuilder() {
               <button
                 key={value}
                 type="button"
-                className={`rounded-md px-3 py-2 text-sm font-semibold ${tab === value ? "bg-white text-slate-950 shadow-sm" : "text-slate-600"}`}
+                className={`rounded-xl px-3 py-2 text-sm font-semibold ${tab === value ? "bg-white text-neutral-900 shadow-sm" : "text-neutral-500"}`}
                 onClick={() => setTab(value as typeof tab)}
               >
                 {label}
@@ -170,7 +170,7 @@ export function BulkUtmBuilder() {
 
         {tab === "csv" ? (
           <div className="mt-6">
-            <label className="text-sm font-medium text-slate-700">
+            <label className="text-sm font-medium text-neutral-600">
               Paste CSV
               <Textarea className="mt-2 min-h-48 font-mono" value={csvText} onChange={(event) => setCsvText(event.target.value)} />
             </label>
@@ -186,7 +186,7 @@ export function BulkUtmBuilder() {
               <button
                 key={row.id}
                 type="button"
-                className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-left text-sm text-slate-700 hover:bg-white"
+                className="rounded-2xl border border-neutral-200 bg-neutral-50 p-4 text-left text-sm text-neutral-600 hover:bg-white"
                 onClick={() => {
                   addRow(row);
                   setTab("table");
@@ -218,9 +218,9 @@ export function BulkUtmBuilder() {
               </Button>
             </div>
 
-            <div className="mt-6 overflow-x-auto rounded-lg border border-slate-200">
+            <div className="mt-6 overflow-x-auto rounded-2xl border border-neutral-200">
               <table className="min-w-[980px] w-full border-collapse bg-white text-sm">
-                <thead className="bg-slate-50 text-left text-slate-700">
+                <thead className="bg-neutral-50 text-left text-neutral-600">
                   <tr>
                     <th className="w-12 px-3 py-3">Use</th>
                     {["Landing URL", "Source", "Medium", "Campaign", "Term", "Content", "Generated URL", "Status"].map((heading) => (
@@ -232,7 +232,7 @@ export function BulkUtmBuilder() {
                 </thead>
                 <tbody>
                   {generated.map((item) => (
-                    <tr key={item.row.id} className="border-t border-slate-100 align-top">
+                    <tr key={item.row.id} className="border-t border-neutral-100 align-top">
                       <td className="px-3 py-3">
                         <input
                           aria-label="Select row"
@@ -247,7 +247,7 @@ export function BulkUtmBuilder() {
                         </td>
                       ))}
                       <td className="min-w-72 px-3 py-3">
-                        <p className="break-all rounded-md bg-slate-50 p-3 text-xs leading-5 text-slate-600">{item.url || "Invalid URL"}</p>
+                        <p className="font-mono break-all rounded-xl bg-neutral-50 p-3 text-xs leading-5 text-neutral-500">{item.url || "Invalid URL"}</p>
                       </td>
                       <td className="min-w-56 px-3 py-3">
                         <InlineIssues errors={item.issues.errors} warnings={item.issues.warnings} />
@@ -260,9 +260,9 @@ export function BulkUtmBuilder() {
 
             <div className="mt-4 grid gap-3 md:hidden">
               {generated.map((item) => (
-                <div key={`card-${item.row.id}`} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-                  <p className="text-sm font-semibold text-slate-950">{item.row.campaign || "Untitled campaign"}</p>
-                  <p className="mt-2 break-all text-xs leading-5 text-slate-600">{item.url || "Invalid URL"}</p>
+                <div key={`card-${item.row.id}`} className="rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+                  <p className="text-sm font-semibold text-neutral-900">{item.row.campaign || "Untitled campaign"}</p>
+                  <p className="mt-2 font-mono break-all text-xs leading-5 text-neutral-500">{item.url || "Invalid URL"}</p>
                   <InlineIssues errors={item.issues.errors} warnings={item.issues.warnings} />
                 </div>
               ))}
@@ -272,9 +272,9 @@ export function BulkUtmBuilder() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr]">
-        <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
-          <h2 className="text-xl font-bold text-slate-950">Export System</h2>
-          <p className="mt-2 text-sm leading-6 text-slate-600">
+        <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
+          <h2 className="text-xl font-bold text-neutral-900">Export System</h2>
+          <p className="mt-2 text-sm leading-6 text-neutral-500">
             {validCount} valid URLs generated. {issueCount} validation notes found.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
@@ -297,12 +297,12 @@ export function BulkUtmBuilder() {
           </div>
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
           <div className="flex items-center gap-2">
-            <QrCode size={18} className="text-emerald-700" aria-hidden="true" />
-            <h2 className="text-xl font-bold text-slate-950">Bulk QR Code Section</h2>
+            <QrCode size={18} className="text-blue-700" aria-hidden="true" />
+            <h2 className="text-xl font-bold text-neutral-900">Bulk QR Code Section</h2>
           </div>
-          <p className="mt-3 text-sm leading-6 text-slate-600">
+          <p className="mt-3 text-sm leading-6 text-neutral-500">
             Generate QR assets for all selected rows. The ZIP download contains lightweight SVG files, and PNG batch downloads each selected QR image.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
@@ -316,19 +316,19 @@ export function BulkUtmBuilder() {
         </div>
       </div>
 
-      <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="text-xl font-bold text-slate-950">Bulk Templates</h2>
-        <p className="mt-2 text-sm text-slate-600">Select rows, then apply a preset campaign template.</p>
+      <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+        <h2 className="text-xl font-bold text-neutral-900">Bulk Templates</h2>
+        <p className="mt-2 text-sm text-neutral-500">Select rows, then apply a preset campaign template.</p>
         <div className="mt-5 flex flex-wrap gap-2">
           {templates.map(([label, values]) => (
-            <button key={label} className="rounded-md border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50" type="button" onClick={() => applyTemplate(values)}>
+            <button key={label} className="rounded-xl border border-neutral-200 px-3 py-2 text-sm font-medium text-neutral-600 hover:bg-neutral-50" type="button" onClick={() => applyTemplate(values)}>
               {label}
             </button>
           ))}
         </div>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-neutral-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-md gap-2">
           <Button className="flex-1" onClick={copyAll}>
             Copy All
@@ -421,7 +421,7 @@ function pickRow(row: BulkRow) {
 
 function InlineIssues({ errors, warnings }: { errors: string[]; warnings: string[] }) {
   if (!errors.length && !warnings.length) {
-    return <span className="inline-flex rounded-md bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-700">Valid</span>;
+    return <span className="inline-flex rounded-xl bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700">Valid</span>;
   }
   return (
     <div className="space-y-1 text-xs leading-5">

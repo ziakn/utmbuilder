@@ -29,10 +29,10 @@ export default async function PlatformPage({ params }: Props) {
 
   return (
     <>
-      <Section className="border-b border-slate-200 bg-slate-50">
+      <Section className="border-b border-neutral-200 bg-neutral-50">
         <Container>
-          <h1 className="text-4xl font-bold text-slate-950">{platform.name} UTM builder</h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-neutral-900">{platform.name} UTM builder</h1>
+          <p className="mt-5 max-w-3xl text-base md:text-lg leading-8 text-neutral-500">
             Use source <strong>{platform.source}</strong> and medium <strong>{platform.medium}</strong> as a clean starting point for {platform.name} campaign links.
           </p>
         </Container>

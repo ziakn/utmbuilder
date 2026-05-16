@@ -31,7 +31,7 @@ const internalLinks = [
   ["Marketing Attribution Guide", "/marketing-attribution"],
 ];
 
-const faqs = [
+const faqs: [string, string][] = [
   ["What is a UTM cleaner?", "A UTM cleaner removes campaign tracking parameters and click IDs from URLs while preserving the destination page and useful query parameters."],
   ["Why remove tracking parameters?", "People remove tracking parameters to share cleaner links, reduce visible analytics clutter, and avoid passing campaign context into unrelated conversations."],
   ["Does removing UTMs affect SEO?", "Removing UTMs from a shared URL does not harm SEO. Canonical tags should point search engines to the clean preferred URL."],
@@ -58,27 +58,27 @@ export default function UtmCleanerPage() {
           { name: "UTM Cleaner", item: absoluteUrl("/utm-cleaner") },
         ]}
       />
-      <Section className="border-b border-slate-200 bg-white pb-10">
+      <Section className="border-b border-neutral-200 bg-white pb-10">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Privacy-focused URL cleanup</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">Privacy-focused URL cleanup</p>
+            <h1 className="mt-4 max-w-3xl text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-neutral-900">
               UTM Cleaner for Tracking URLs
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mt-5 max-w-2xl text-base md:text-lg leading-8 text-neutral-500">
               Remove UTM parameters, analytics tags, tracking IDs, and campaign query strings from URLs instantly.
             </p>
-            <Link href="#cleaner" className="mt-8 inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800">
+            <Link href="#cleaner" className="mt-8 inline-flex h-12 items-center justify-center rounded-xl bg-neutral-900 px-5 text-sm font-semibold text-white hover:bg-neutral-800">
               Clean URL
               <ArrowRight className="ml-2" size={17} aria-hidden="true" />
             </Link>
           </div>
-          <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-5">
-            <h2 className="text-xl font-bold text-slate-950">Remove tracking clutter safely</h2>
-            <div className="mt-5 grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
+          <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+            <h2 className="text-xl font-bold text-neutral-900">Remove tracking clutter safely</h2>
+            <div className="mt-5 grid gap-3 text-sm text-neutral-600 sm:grid-cols-2">
               {["Preserve path structure", "Remove UTM parameters", "Remove ad click IDs", "Preserve useful query params", "Bulk URL cleaning", "TXT and CSV export"].map((item) => (
                 <span key={item} className="flex gap-2">
-                  <CheckCircle2 className="mt-0.5 shrink-0 text-emerald-600" size={17} aria-hidden="true" />
+                  <CheckCircle2 className="mt-0.5 shrink-0 text-blue-600" size={17} aria-hidden="true" />
                   {item}
                 </span>
               ))}
@@ -93,12 +93,12 @@ export default function UtmCleanerPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="Privacy explanation" title="Why people clean tracking links" />
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
             {privacyPoints.map((point) => (
-              <div key={point} className="rounded-lg border border-slate-200 bg-white p-5 text-sm leading-6 text-slate-600 shadow-sm">
+              <div key={point} className="rounded-2xl border border-neutral-200 bg-white p-5 text-sm leading-6 text-neutral-500 shadow-sm">
                 {point}
               </div>
             ))}
@@ -113,12 +113,12 @@ export default function UtmCleanerPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="Internal links" title="Build, decode, validate, and understand tracking URLs" />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {internalLinks.map(([label, href]) => (
-              <Link key={href} href={href} className="rounded-lg border border-slate-200 bg-white p-5 text-sm font-semibold text-slate-700 shadow-sm hover:text-slate-950 hover:shadow-md">
+              <Link key={href} href={href} className="rounded-2xl border border-neutral-200 bg-white p-5 text-sm font-semibold text-neutral-600 shadow-sm hover:text-neutral-900 hover:shadow-md">
                 {label}
               </Link>
             ))}
@@ -131,9 +131,9 @@ export default function UtmCleanerPage() {
           <SectionHeader eyebrow="FAQ" title="UTM cleaner questions" />
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {faqs.map(([question, answer]) => (
-              <details key={question} className="rounded-lg border border-slate-200 bg-white p-5">
-                <summary className="cursor-pointer font-semibold text-slate-950">{question}</summary>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{answer}</p>
+              <details key={question} className="rounded-2xl border border-neutral-200 bg-white p-5">
+                <summary className="cursor-pointer font-semibold text-neutral-900">{question}</summary>
+                <p className="mt-3 text-sm leading-6 text-neutral-500">{answer}</p>
               </details>
             ))}
           </div>
@@ -146,15 +146,15 @@ export default function UtmCleanerPage() {
 function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">{eyebrow}</p>
-      <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-slate-950">{title}</h2>
+      <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">{eyebrow}</p>
+      <h2 className="mt-3 max-w-3xl text-3xl md:text-4xl font-semibold leading-tight text-neutral-900">{title}</h2>
     </div>
   );
 }
 
 function EducationalContent() {
   return (
-    <div className="mt-8 space-y-6 text-base leading-8 text-slate-600">
+    <div className="mt-8 space-y-6 text-base md:text-lg leading-8 text-neutral-500">
       <p>
         Tracking parameters are query string values added to URLs to pass information between platforms, analytics tools, advertising systems, affiliate networks, and websites. They often appear after a question mark in a URL. A link might include UTM values such as utm_source, utm_medium, and utm_campaign, or advertising click IDs such as gclid, fbclid, ttclid, and msclkid. These values help marketers understand how a visitor reached a site, but they can also make URLs long, messy, and harder to share.
       </p>

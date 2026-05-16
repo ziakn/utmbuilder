@@ -7,6 +7,7 @@ interface SEOProps {
   path: string;
   ogImage?: string;
   noIndex?: boolean;
+  openGraph?: Partial<Metadata["openGraph"]>;
 }
 
 export function constructMetadata({
@@ -15,6 +16,7 @@ export function constructMetadata({
   path,
   ogImage = "/og-image.png",
   noIndex = false,
+  openGraph,
 }: SEOProps): Metadata {
   return {
     title,
@@ -30,6 +32,7 @@ export function constructMetadata({
         },
       ],
       type: "website",
+      ...openGraph,
     },
     twitter: {
       card: "summary_large_image",

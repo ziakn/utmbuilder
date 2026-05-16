@@ -29,7 +29,7 @@ const internalLinks = [
   ["Campaign Attribution Guide", "/campaign-attribution"],
 ];
 
-const faqs = [
+const faqs: [string, string][] = [
   ["What is a UTM decoder?", "A UTM decoder parses a campaign tracking URL and displays decoded UTM parameters, click IDs, and attribution values in a readable format."],
   ["How do I decode tracking URLs?", "Paste the full tracking URL into the decoder. The tool extracts query parameters, decodes encoded values, and shows a GA4 attribution preview."],
   ["Why are some URL values encoded?", "URL encoding converts spaces and special characters into safe sequences such as %20, %2F, %3A, and %26 so links can travel through browsers and tools correctly."],
@@ -56,27 +56,27 @@ export default function UtmDecoderPage() {
           { name: "UTM Decoder", item: absoluteUrl("/utm-decoder") },
         ]}
       />
-      <Section className="border-b border-slate-200 bg-white pb-10">
+      <Section className="border-b border-neutral-200 bg-white pb-10">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Tracking URL parser</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">Tracking URL parser</p>
+            <h1 className="mt-4 max-w-3xl text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-neutral-900">
               UTM Decoder for Campaign Tracking URLs
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mt-5 max-w-2xl text-base md:text-lg leading-8 text-neutral-500">
               Decode UTM parameters, inspect campaign tracking URLs, and analyze Google Analytics or GA4 attribution links instantly.
             </p>
-            <Link href="#decoder" className="mt-8 inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800">
+            <Link href="#decoder" className="mt-8 inline-flex h-12 items-center justify-center rounded-xl bg-neutral-900 px-5 text-sm font-semibold text-white hover:bg-neutral-800">
               Decode URL
               <ArrowRight className="ml-2" size={17} aria-hidden="true" />
             </Link>
           </div>
-          <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-5">
-            <h2 className="text-xl font-bold text-slate-950">Inspect attribution data fast</h2>
-            <div className="mt-5 grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
+          <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+            <h2 className="text-xl font-bold text-neutral-900">Inspect attribution data fast</h2>
+            <div className="mt-5 grid gap-3 text-sm text-neutral-600 sm:grid-cols-2">
               {["Decode encoded values", "Parse UTM parameters", "Find click IDs", "Preview GA4 attribution", "Export JSON and CSV", "Troubleshoot tracking links"].map((item) => (
                 <span key={item} className="flex gap-2">
-                  <CheckCircle2 className="mt-0.5 shrink-0 text-emerald-600" size={17} aria-hidden="true" />
+                  <CheckCircle2 className="mt-0.5 shrink-0 text-blue-600" size={17} aria-hidden="true" />
                   {item}
                 </span>
               ))}
@@ -91,14 +91,14 @@ export default function UtmDecoderPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="Common tracking examples" title="Recognize common UTM patterns" />
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {examples.map(([label, value]) => (
-              <div key={label} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-                <h3 className="font-bold text-slate-950">{label}</h3>
-                <code className="mt-4 block break-all rounded-md bg-slate-50 p-3 text-sm text-slate-700">{value}</code>
+              <div key={label} className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+                <h3 className="font-bold text-neutral-900">{label}</h3>
+                <code className="mt-4 block font-mono break-all rounded-xl bg-neutral-50 p-3 text-sm text-neutral-600">{value}</code>
               </div>
             ))}
           </div>
@@ -112,12 +112,12 @@ export default function UtmDecoderPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="Internal links" title="Build, validate, clean, and improve UTM links" />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {internalLinks.map(([label, href]) => (
-              <Link key={href} href={href} className="rounded-lg border border-slate-200 bg-white p-5 text-sm font-semibold text-slate-700 shadow-sm hover:text-slate-950 hover:shadow-md">
+              <Link key={href} href={href} className="rounded-2xl border border-neutral-200 bg-white p-5 text-sm font-semibold text-neutral-600 shadow-sm hover:text-neutral-900 hover:shadow-md">
                 {label}
               </Link>
             ))}
@@ -130,9 +130,9 @@ export default function UtmDecoderPage() {
           <SectionHeader eyebrow="FAQ" title="UTM decoder questions" />
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {faqs.map(([question, answer]) => (
-              <details key={question} className="rounded-lg border border-slate-200 bg-white p-5">
-                <summary className="cursor-pointer font-semibold text-slate-950">{question}</summary>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{answer}</p>
+              <details key={question} className="rounded-2xl border border-neutral-200 bg-white p-5">
+                <summary className="cursor-pointer font-semibold text-neutral-900">{question}</summary>
+                <p className="mt-3 text-sm leading-6 text-neutral-500">{answer}</p>
               </details>
             ))}
           </div>
@@ -145,15 +145,15 @@ export default function UtmDecoderPage() {
 function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">{eyebrow}</p>
-      <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-slate-950">{title}</h2>
+      <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">{eyebrow}</p>
+      <h2 className="mt-3 max-w-3xl text-3xl md:text-4xl font-semibold leading-tight text-neutral-900">{title}</h2>
     </div>
   );
 }
 
 function EducationalContent() {
   return (
-    <div className="mt-8 space-y-6 text-base leading-8 text-slate-600">
+    <div className="mt-8 space-y-6 text-base md:text-lg leading-8 text-neutral-500">
       <p>
         UTM parameters are small pieces of campaign information added to a URL. They help marketers understand where traffic came from, which channel produced the visit, and which campaign should receive credit. A UTM decoder takes an existing tracking URL and turns the query string into a readable table. This is useful when a link has been copied from an ad platform, email tool, affiliate dashboard, spreadsheet, QR code generator, or analytics report and the marketer needs to understand what it contains.
       </p>

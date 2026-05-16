@@ -41,11 +41,11 @@ const footerGroups = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-slate-200 bg-slate-50">
+    <footer className="border-t border-neutral-200 bg-neutral-50">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.2fr_repeat(4,1fr)]">
         <div>
-          <p className="font-semibold text-slate-950">UTM Builder</p>
-          <p className="mt-3 text-sm leading-6 text-slate-600">
+          <p className="font-semibold text-neutral-900">UTM Builder</p>
+          <p className="mt-3 text-sm leading-6 text-neutral-500">
             Free static marketing tracking tools and practical analytics education for cleaner attribution.
           </p>
         </div>
@@ -66,11 +66,11 @@ function FooterGroup({
 }) {
   return (
     <div>
-      <p className="font-semibold text-slate-950">{title}</p>
-      <ul className="mt-3 space-y-2 text-sm text-slate-600">
+      <p className="font-semibold text-neutral-900">{title}</p>
+      <ul className="mt-3 space-y-2 text-sm text-neutral-500">
         {items.map((item) => (
           <li key={item.href}>
-            <Link href={item.href} className="hover:text-slate-950">
+            <Link href={item.href} className="hover:text-neutral-900">
               {item.label}
             </Link>
           </li>

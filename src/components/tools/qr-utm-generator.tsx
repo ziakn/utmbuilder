@@ -104,13 +104,13 @@ export function QrUtmGenerator() {
 
   return (
     <div id="qr-generator" className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-      <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-        <div className="flex items-center gap-2 text-sm font-semibold text-emerald-700">
+      <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="flex items-center gap-2 text-sm font-semibold text-blue-700">
           <QrCode size={17} aria-hidden="true" />
           URL + UTM Builder Form
         </div>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <label className="sm:col-span-2 text-sm font-medium text-slate-700">
+          <label className="sm:col-span-2 text-sm font-medium text-neutral-600">
             Website URL
             <Input className="mt-2 h-12" value={values.websiteUrl} onChange={(event) => update("websiteUrl", event.target.value)} />
           </label>
@@ -121,9 +121,9 @@ export function QrUtmGenerator() {
           <Field label="Campaign Content" value={values.content} onChange={(value) => update("content", value)} placeholder="poster_a" />
         </div>
 
-        <div className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4">
-          <h2 className="font-bold text-slate-950">Live UTM URL Preview</h2>
-          <p className="mt-3 break-all rounded-md bg-white p-3 text-sm leading-6 text-slate-700">
+        <div className="mt-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+          <h2 className="font-bold text-neutral-900">Live UTM URL Preview</h2>
+          <p className="mt-3 font-mono break-all rounded-xl bg-white p-3 text-sm leading-6 text-neutral-600">
             {trackedUrl || "Enter a valid website URL to generate a tracked QR destination."}
           </p>
           <Button className="mt-4" variant="secondary" onClick={copyUrl} disabled={!valid}>
@@ -132,14 +132,14 @@ export function QrUtmGenerator() {
           </Button>
         </div>
 
-        <div className="mt-6 rounded-lg border border-slate-200 bg-white p-4">
-          <h2 className="font-bold text-slate-950">QR Customization Section</h2>
+        <div className="mt-6 rounded-2xl border border-neutral-200 bg-white p-4">
+          <h2 className="font-bold text-neutral-900">QR Customization Section</h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <Range label="QR size" value={size} min={220} max={640} onChange={setSize} suffix="px" />
             <Range label="Margin" value={margin} min={0} max={6} onChange={setMargin} />
-            <label className="text-sm font-medium text-slate-700">
+            <label className="text-sm font-medium text-neutral-600">
               Error correction
-              <select className="mt-2 h-11 w-full rounded-md border border-slate-200 bg-white px-3 text-sm" value={level} onChange={(event) => setLevel(event.target.value as typeof level)}>
+              <select className="mt-2 h-11 w-full rounded-xl border border-neutral-200 bg-white px-3 text-sm" value={level} onChange={(event) => setLevel(event.target.value as typeof level)}>
                 {correctionLevels.map((item) => (
                   <option key={item} value={item}>
                     {item}
@@ -147,17 +147,17 @@ export function QrUtmGenerator() {
                 ))}
               </select>
             </label>
-            <label className="text-sm font-medium text-slate-700">
+            <label className="text-sm font-medium text-neutral-600">
               Foreground color
               <Input className="mt-2 h-11" type="color" value={foreground} onChange={(event) => setForeground(event.target.value)} />
             </label>
-            <label className="text-sm font-medium text-slate-700">
+            <label className="text-sm font-medium text-neutral-600">
               Background color
               <Input className="mt-2 h-11" type="color" value={background} onChange={(event) => setBackground(event.target.value)} />
             </label>
             <Toggle label="Dark/light mode" checked={darkMode} onChange={setDarkMode} />
             <Toggle label="Rounded corners" checked={rounded} onChange={setRounded} />
-            <div className="flex min-h-11 items-center gap-2 rounded-md border border-dashed border-slate-300 px-3 text-sm text-slate-600">
+            <div className="flex min-h-11 items-center gap-2 rounded-xl border border-dashed border-neutral-300 px-3 text-sm text-neutral-500">
               <Upload size={16} aria-hidden="true" />
               Logo upload placeholder
             </div>
@@ -166,10 +166,10 @@ export function QrUtmGenerator() {
       </div>
 
       <div className="space-y-6">
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-950">QR Code Generator Section</h2>
-          <div className="mt-5 flex justify-center rounded-lg border border-slate-200 bg-slate-50 p-4">
-            <div className={rounded ? "overflow-hidden rounded-lg bg-white p-3" : "bg-white p-3"}>
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+          <h2 className="text-xl font-bold text-neutral-900">QR Code Generator Section</h2>
+          <div className="mt-5 flex justify-center rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+            <div className={rounded ? "overflow-hidden rounded-2xl bg-white p-3" : "bg-white p-3"}>
               <canvas ref={canvasRef} aria-label="Generated QR code with UTM tracking" />
             </div>
           </div>
@@ -196,22 +196,22 @@ export function QrUtmGenerator() {
           </div>
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-emerald-50 p-5">
-          <h2 className="text-xl font-bold text-slate-950">Analytics Tracking Explanation</h2>
-          <p className="mt-3 text-sm leading-6 text-slate-700">
+        <div className="rounded-2xl border border-neutral-200 bg-blue-50 p-5">
+          <h2 className="text-xl font-bold text-neutral-900">Analytics Tracking Explanation</h2>
+          <p className="mt-3 text-sm leading-6 text-neutral-600">
             QR scans become website visits. GA4 can read the UTM source, medium, and campaign from the destination URL, so offline placements like flyers, packaging, booths, and posters can appear in acquisition reports.
           </p>
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-950">Bulk QR Generation Section</h2>
-          <p className="mt-3 text-sm leading-6 text-slate-600">
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+          <h2 className="text-xl font-bold text-neutral-900">Bulk QR Generation Section</h2>
+          <p className="mt-3 text-sm leading-6 text-neutral-500">
             Future version: paste multiple campaign links, generate a batch of QR codes, and download everything as a ZIP. For now, use the single QR workflow above for high-quality print exports.
           </p>
         </div>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-neutral-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-md gap-2">
           <Button className="flex-1" onClick={() => flash("generated")} disabled={!valid}>
             Generate QR
@@ -258,7 +258,7 @@ function Field({
   placeholder: string;
 }) {
   return (
-    <label className="text-sm font-medium text-slate-700">
+    <label className="text-sm font-medium text-neutral-600">
       {label}
       <Input className="mt-2 h-12" placeholder={placeholder} value={value} onChange={(event) => onChange(event.target.value)} />
     </label>
@@ -281,17 +281,17 @@ function Range({
   suffix?: string;
 }) {
   return (
-    <label className="text-sm font-medium text-slate-700">
+    <label className="text-sm font-medium text-neutral-600">
       {label}: {value}
       {suffix}
-      <input className="mt-3 w-full accent-emerald-600" type="range" min={min} max={max} value={value} onChange={(event) => onChange(Number(event.target.value))} />
+      <input className="mt-3 w-full accent-blue-600" type="range" min={min} max={max} value={value} onChange={(event) => onChange(Number(event.target.value))} />
     </label>
   );
 }
 
 function Toggle({ label, checked, onChange }: { label: string; checked: boolean; onChange: (value: boolean) => void }) {
   return (
-    <label className="flex min-h-11 items-center gap-3 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700">
+    <label className="flex min-h-11 items-center gap-3 rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm font-medium text-neutral-600">
       <input checked={checked} type="checkbox" onChange={(event) => onChange(event.target.checked)} />
       {label}
     </label>

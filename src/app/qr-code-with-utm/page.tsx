@@ -42,7 +42,7 @@ const internalLinks = [
   ["Marketing Attribution Guide", "/marketing-attribution"],
 ];
 
-const faqs = [
+const faqs: [string, string][] = [
   ["Can QR codes track scans?", "Yes. A QR code can point to a UTM-tagged URL, and each scan becomes a website visit that analytics tools can measure."],
   ["How do QR codes work with GA4?", "When someone scans a QR code and lands on your site, GA4 can read UTM parameters such as source, medium, and campaign from the URL."],
   ["What are UTM QR codes?", "UTM QR codes are QR codes whose destination URLs include UTM tracking parameters for campaign attribution."],
@@ -69,24 +69,24 @@ export default function QrCodeWithUtmPage() {
           { name: "QR Code with UTM", item: absoluteUrl("/qr-code-with-utm") },
         ]}
       />
-      <Section className="border-b border-slate-200 bg-white pb-10">
+      <Section className="border-b border-neutral-200 bg-white pb-10">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Offline campaign tracking</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">Offline campaign tracking</p>
+            <h1 className="mt-4 max-w-3xl text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-neutral-900">
               QR Code Generator with UTM Tracking
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mt-5 max-w-2xl text-base md:text-lg leading-8 text-neutral-500">
               Generate QR codes with campaign tracking parameters for Google Analytics, GA4, offline marketing, events, flyers, packaging, and social campaigns.
             </p>
-            <Link href="#qr-generator" className="mt-8 inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800">
+            <Link href="#qr-generator" className="mt-8 inline-flex h-12 items-center justify-center rounded-xl bg-neutral-900 px-5 text-sm font-semibold text-white hover:bg-neutral-800">
               Generate QR Code
               <ArrowRight className="ml-2" size={17} aria-hidden="true" />
             </Link>
           </div>
-          <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-5">
-            <h2 className="text-xl font-bold text-slate-950">Track offline scans in GA4</h2>
-            <p className="mt-3 text-sm leading-6 text-slate-700">
+          <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+            <h2 className="text-xl font-bold text-neutral-900">Track offline scans in GA4</h2>
+            <p className="mt-3 text-sm leading-6 text-neutral-600">
               Build the UTM destination, render a high-contrast QR code, export PNG or SVG, and measure scans from flyers, posters, packaging, booths, labels, and cards.
             </p>
           </div>
@@ -99,14 +99,14 @@ export default function QrCodeWithUtmPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="Offline campaign examples" title="UTM patterns for print and physical placements" />
           <div className="mt-8 grid gap-4 md:grid-cols-4">
             {offlineExamples.map(([label, value]) => (
-              <div key={label} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-                <h3 className="font-bold text-slate-950">{label}</h3>
-                <code className="mt-4 block break-all rounded-md bg-slate-50 p-3 text-sm text-slate-700">{value}</code>
+              <div key={label} className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+                <h3 className="font-bold text-neutral-900">{label}</h3>
+                <code className="mt-4 block font-mono break-all rounded-xl bg-neutral-50 p-3 text-sm text-neutral-600">{value}</code>
               </div>
             ))}
           </div>
@@ -118,16 +118,16 @@ export default function QrCodeWithUtmPage() {
           <SectionHeader eyebrow="Real use cases" title="Where tracked QR codes create measurable visits" />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map(([label, Icon]) => (
-              <div key={label as string} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-                <Icon size={22} className="text-emerald-700" aria-hidden="true" />
-                <h3 className="mt-4 font-bold text-slate-950">{label as string}</h3>
+              <div key={label as string} className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+                <Icon size={22} className="text-blue-700" aria-hidden="true" />
+                <h3 className="mt-4 font-bold text-neutral-900">{label as string}</h3>
               </div>
             ))}
           </div>
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container className="max-w-4xl">
           <SectionHeader eyebrow="QR tracking education" title="How QR code tracking connects offline campaigns to GA4 reports" />
           <EducationalContent />
@@ -139,7 +139,7 @@ export default function QrCodeWithUtmPage() {
           <SectionHeader eyebrow="Internal links" title="Improve your campaign tracking workflow" />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {internalLinks.map(([label, href]) => (
-              <Link key={href} href={href} className="rounded-lg border border-slate-200 bg-white p-5 text-sm font-semibold text-slate-700 shadow-sm hover:text-slate-950 hover:shadow-md">
+              <Link key={href} href={href} className="rounded-2xl border border-neutral-200 bg-white p-5 text-sm font-semibold text-neutral-600 shadow-sm hover:text-neutral-900 hover:shadow-md">
                 {label}
               </Link>
             ))}
@@ -147,14 +147,14 @@ export default function QrCodeWithUtmPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="FAQ" title="QR code tracking questions" />
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {faqs.map(([question, answer]) => (
-              <details key={question} className="rounded-lg border border-slate-200 bg-white p-5">
-                <summary className="cursor-pointer font-semibold text-slate-950">{question}</summary>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{answer}</p>
+              <details key={question} className="rounded-2xl border border-neutral-200 bg-white p-5">
+                <summary className="cursor-pointer font-semibold text-neutral-900">{question}</summary>
+                <p className="mt-3 text-sm leading-6 text-neutral-500">{answer}</p>
               </details>
             ))}
           </div>
@@ -167,15 +167,15 @@ export default function QrCodeWithUtmPage() {
 function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">{eyebrow}</p>
-      <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-slate-950">{title}</h2>
+      <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">{eyebrow}</p>
+      <h2 className="mt-3 max-w-3xl text-3xl md:text-4xl font-semibold leading-tight text-neutral-900">{title}</h2>
     </div>
   );
 }
 
 function EducationalContent() {
   return (
-    <div className="mt-8 space-y-6 text-base leading-8 text-slate-600">
+    <div className="mt-8 space-y-6 text-base md:text-lg leading-8 text-neutral-500">
       <p>
         QR code tracking works by turning a physical scan into a measurable website visit. A QR code is simply a machine-readable way to open a URL. When that URL contains UTM parameters, the scan can carry campaign context into Google Analytics or GA4. Instead of printing a plain landing page URL on a flyer, menu, package, poster, or booth sign, marketers can print a QR code that points to a tracked URL. When someone scans it, the browser opens the destination and GA4 can read the source, medium, and campaign values.
       </p>

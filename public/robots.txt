@@ -1,6 +1,11 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /test
+Disallow: /api
+Disallow: /*?*
+Disallow: /search
 
 # Host
 Host: https://utmbuilder.ziamuhammad.com

@@ -32,7 +32,7 @@ const internalLinks = [
   ["UTM Cleaner", "/utm-cleaner"],
 ];
 
-const faqs = [
+const faqs: [string, string][] = [
   ["What is a UTM validator?", "A UTM validator checks campaign URLs for missing parameters, malformed query strings, duplicate UTM keys, uppercase values, spaces, invalid characters, and tracking issues."],
   ["Why should I validate campaign URLs?", "Validation helps catch mistakes before links are published in ads, emails, social posts, affiliate campaigns, or QR codes."],
   ["Do uppercase UTMs cause issues?", "Uppercase values can fragment reports because analytics tools may treat facebook and Facebook as different values."],
@@ -59,27 +59,27 @@ export default function UtmValidatorPage() {
           { name: "UTM Validator", item: absoluteUrl("/utm-validator") },
         ]}
       />
-      <Section className="border-b border-slate-200 bg-white pb-10">
+      <Section className="border-b border-neutral-200 bg-white pb-10">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">UTM audit tool</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">UTM audit tool</p>
+            <h1 className="mt-4 max-w-3xl text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-neutral-900">
               UTM Validator for Google Analytics &amp; GA4
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mt-5 max-w-2xl text-base md:text-lg leading-8 text-neutral-500">
               Check campaign tracking URLs for formatting errors, missing parameters, naming inconsistencies, and analytics tracking issues.
             </p>
-            <Link href="#validator" className="mt-8 inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800">
+            <Link href="#validator" className="mt-8 inline-flex h-12 items-center justify-center rounded-xl bg-neutral-900 px-5 text-sm font-semibold text-white hover:bg-neutral-800">
               Validate URL
               <ArrowRight className="ml-2" size={17} aria-hidden="true" />
             </Link>
           </div>
-          <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-5">
-            <h2 className="text-xl font-bold text-slate-950">Detect tracking issues before launch</h2>
-            <div className="mt-5 grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
+          <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+            <h2 className="text-xl font-bold text-neutral-900">Detect tracking issues before launch</h2>
+            <div className="mt-5 grid gap-3 text-sm text-neutral-600 sm:grid-cols-2">
               {["Valid URL", "HTTPS usage", "Duplicate UTM parameters", "Missing required parameters", "Uppercase inconsistency", "Broken encoding"].map((item) => (
                 <span key={item} className="flex gap-2">
-                  <CheckCircle2 className="mt-0.5 shrink-0 text-emerald-600" size={17} aria-hidden="true" />
+                  <CheckCircle2 className="mt-0.5 shrink-0 text-blue-600" size={17} aria-hidden="true" />
                   {item}
                 </span>
               ))}
@@ -94,31 +94,31 @@ export default function UtmValidatorPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container className="grid gap-10 lg:grid-cols-2">
-          <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-2xl font-bold text-slate-950">UTM Best Practices</h2>
-            <ul className="mt-5 space-y-3 text-slate-600">
+          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900">UTM Best Practices</h2>
+            <ul className="mt-5 space-y-3 text-neutral-500">
               {bestPractices.map((practice) => (
                 <li key={practice} className="flex gap-2">
-                  <CheckCircle2 className="mt-1 shrink-0 text-emerald-600" size={16} aria-hidden="true" />
+                  <CheckCircle2 className="mt-1 shrink-0 text-blue-600" size={16} aria-hidden="true" />
                   {practice}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-2xl font-bold text-slate-950">Common Errors Examples</h2>
+          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900">Common Errors Examples</h2>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-md border border-red-200 bg-red-50 p-4">
+              <div className="rounded-xl border border-red-200 bg-red-50 p-4">
                 <h3 className="font-bold text-red-900">Bad Example</h3>
-                <code className="mt-3 block break-all rounded bg-white px-3 py-2 text-sm text-red-800">utm_Source=Facebook Ads</code>
+                <code className="mt-3 block font-mono break-all rounded bg-white px-3 py-2 text-sm text-red-800">utm_Source=Facebook Ads</code>
                 <p className="mt-3 text-sm leading-6 text-red-800">Problems: uppercase, spaces, inconsistent naming.</p>
               </div>
-              <div className="rounded-md border border-emerald-200 bg-emerald-50 p-4">
-                <h3 className="font-bold text-emerald-900">Good Example</h3>
-                <code className="mt-3 block break-all rounded bg-white px-3 py-2 text-sm text-emerald-800">utm_source=facebook_ads</code>
-                <p className="mt-3 text-sm leading-6 text-emerald-800">Lowercase, readable, and consistent.</p>
+              <div className="rounded-xl border border-blue-200 bg-blue-50 p-4">
+                <h3 className="font-bold text-blue-900">Good Example</h3>
+                <code className="mt-3 block font-mono break-all rounded bg-white px-3 py-2 text-sm text-blue-800">utm_source=facebook_ads</code>
+                <p className="mt-3 text-sm leading-6 text-blue-800">Lowercase, readable, and consistent.</p>
               </div>
             </div>
           </div>
@@ -132,12 +132,12 @@ export default function UtmValidatorPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="Internal links" title="Fix, build, and standardize your campaign links" />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {internalLinks.map(([label, href]) => (
-              <Link key={href} href={href} className="rounded-lg border border-slate-200 bg-white p-5 text-sm font-semibold text-slate-700 shadow-sm hover:text-slate-950 hover:shadow-md">
+              <Link key={href} href={href} className="rounded-2xl border border-neutral-200 bg-white p-5 text-sm font-semibold text-neutral-600 shadow-sm hover:text-neutral-900 hover:shadow-md">
                 {label}
               </Link>
             ))}
@@ -150,9 +150,9 @@ export default function UtmValidatorPage() {
           <SectionHeader eyebrow="FAQ" title="UTM validator questions" />
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {faqs.map(([question, answer]) => (
-              <details key={question} className="rounded-lg border border-slate-200 bg-white p-5">
-                <summary className="cursor-pointer font-semibold text-slate-950">{question}</summary>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{answer}</p>
+              <details key={question} className="rounded-2xl border border-neutral-200 bg-white p-5">
+                <summary className="cursor-pointer font-semibold text-neutral-900">{question}</summary>
+                <p className="mt-3 text-sm leading-6 text-neutral-500">{answer}</p>
               </details>
             ))}
           </div>
@@ -165,15 +165,15 @@ export default function UtmValidatorPage() {
 function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">{eyebrow}</p>
-      <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-slate-950">{title}</h2>
+      <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">{eyebrow}</p>
+      <h2 className="mt-3 max-w-3xl text-3xl md:text-4xl font-semibold leading-tight text-neutral-900">{title}</h2>
     </div>
   );
 }
 
 function EducationalContent() {
   return (
-    <div className="mt-8 space-y-6 text-base leading-8 text-slate-600">
+    <div className="mt-8 space-y-6 text-base md:text-lg leading-8 text-neutral-500">
       <p>
         UTM validation matters because campaign tracking URLs are often created quickly, copied between tools, edited by several people, and published across channels where mistakes are expensive to fix later. A single malformed parameter can split reports, hide traffic sources, or make a campaign look less effective than it really was. A UTM validator gives marketers, agencies, PPC teams, affiliate managers, and analytics teams a way to inspect campaign links before they reach ads, newsletters, social posts, influencer briefs, or QR codes.
       </p>

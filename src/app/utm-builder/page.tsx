@@ -46,7 +46,7 @@ const internalLinks = [
   ["QR code tool", "/qr-code-with-utm"],
 ];
 
-const faqs = [
+const faqs: [string, string][] = [
   ["What is a UTM parameter?", "A UTM parameter is a tracking value added to a URL so analytics tools can identify the source, medium, campaign, keyword, or creative that generated a visit."],
   ["Does GA4 support UTMs?", "Yes. GA4 reads UTM parameters and uses them in acquisition, traffic source, and campaign reporting."],
   ["Are UTMs case-sensitive?", "UTM values can appear as separate report rows when capitalization differs, so lowercase naming is recommended."],
@@ -73,27 +73,27 @@ export default function UtmBuilderPage() {
           { name: "UTM Builder", item: absoluteUrl("/utm-builder") },
         ]}
       />
-      <Section className="border-b border-slate-200 bg-white pb-10">
+      <Section className="border-b border-neutral-200 bg-white pb-10">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Free UTM generator</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">Free UTM generator</p>
+            <h1 className="mt-4 max-w-3xl text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-neutral-900">
               Free UTM Builder for Google Analytics &amp; GA4
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className="mt-5 max-w-2xl text-base md:text-lg leading-8 text-neutral-500">
               Generate clean campaign tracking URLs for email marketing, social media, paid ads, QR codes, affiliate campaigns, and analytics reporting.
             </p>
-            <Link href="#builder" className="mt-8 inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800">
+            <Link href="#builder" className="mt-8 inline-flex h-12 items-center justify-center rounded-xl bg-neutral-900 px-5 text-sm font-semibold text-white hover:bg-neutral-800">
               Generate Tracking URL
               <ArrowRight className="ml-2" size={17} aria-hidden="true" />
             </Link>
           </div>
-          <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-5">
-            <h2 className="text-xl font-bold text-slate-950">Built for repeat campaign workflows</h2>
-            <div className="mt-5 grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
+          <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+            <h2 className="text-xl font-bold text-neutral-900">Built for repeat campaign workflows</h2>
+            <div className="mt-5 grid gap-3 text-sm text-neutral-600 sm:grid-cols-2">
               {["Instant generation", "Copy button", "QR downloads", "Validation warnings", "Preset templates", "Mobile sticky actions"].map((item) => (
                 <span key={item} className="flex gap-2">
-                  <CheckCircle2 className="mt-0.5 shrink-0 text-emerald-600" size={17} aria-hidden="true" />
+                  <CheckCircle2 className="mt-0.5 shrink-0 text-blue-600" size={17} aria-hidden="true" />
                   {item}
                 </span>
               ))}
@@ -108,13 +108,13 @@ export default function UtmBuilderPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container className="grid gap-10 lg:grid-cols-2">
           <InfoBlock title="UTM Naming Best Practices">
-            <ul className="space-y-3 text-slate-600">
+            <ul className="space-y-3 text-neutral-500">
               {bestRules.map((rule) => (
                 <li key={rule} className="flex gap-2">
-                  <CheckCircle2 className="mt-1 shrink-0 text-emerald-600" size={16} aria-hidden="true" />
+                  <CheckCircle2 className="mt-1 shrink-0 text-blue-600" size={16} aria-hidden="true" />
                   {rule}
                 </li>
               ))}
@@ -127,7 +127,7 @@ export default function UtmBuilderPage() {
           <InfoBlock title="Common Mistakes">
             <div className="grid gap-3">
               {mistakes.map((mistake) => (
-                <div key={mistake} className="rounded-md border border-slate-200 bg-white p-3 text-sm text-slate-700">
+                <div key={mistake} className="rounded-xl border border-neutral-200 bg-white p-3 text-sm text-neutral-600">
                   {mistake}
                 </div>
               ))}
@@ -141,16 +141,16 @@ export default function UtmBuilderPage() {
           <SectionHeader eyebrow="Example URLs" title="Copy a structure and adapt it to your campaign" />
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {examples.map(([label, url]) => (
-              <div key={label} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-                <h3 className="font-bold text-slate-950">{label}</h3>
-                <p className="mt-3 break-all rounded-md bg-slate-50 p-3 text-sm leading-6 text-slate-600">{url}</p>
+              <div key={label} className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+                <h3 className="font-bold text-neutral-900">{label}</h3>
+                <p className="mt-3 font-mono break-all rounded-xl bg-neutral-50 p-3 text-sm leading-6 text-neutral-500">{url}</p>
               </div>
             ))}
           </div>
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container className="max-w-4xl">
           <SectionHeader eyebrow="UTM education" title="How UTM tracking connects campaigns, attribution, and analytics reporting" />
           <LongContent />
@@ -162,7 +162,7 @@ export default function UtmBuilderPage() {
           <SectionHeader eyebrow="Internal links" title="Continue improving your campaign tracking setup" />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {internalLinks.map(([label, href]) => (
-              <Link key={href} href={href} className="rounded-lg border border-slate-200 bg-white p-5 text-sm font-semibold text-slate-700 shadow-sm hover:text-slate-950 hover:shadow-md">
+              <Link key={href} href={href} className="rounded-2xl border border-neutral-200 bg-white p-5 text-sm font-semibold text-neutral-600 shadow-sm hover:text-neutral-900 hover:shadow-md">
                 {label}
               </Link>
             ))}
@@ -170,14 +170,14 @@ export default function UtmBuilderPage() {
         </Container>
       </Section>
 
-      <Section className="bg-slate-50">
+      <Section className="bg-neutral-50">
         <Container>
           <SectionHeader eyebrow="FAQ" title="UTM builder questions" />
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {faqs.map(([question, answer]) => (
-              <details key={question} className="rounded-lg border border-slate-200 bg-white p-5">
-                <summary className="cursor-pointer font-semibold text-slate-950">{question}</summary>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{answer}</p>
+              <details key={question} className="rounded-2xl border border-neutral-200 bg-white p-5">
+                <summary className="cursor-pointer font-semibold text-neutral-900">{question}</summary>
+                <p className="mt-3 text-sm leading-6 text-neutral-500">{answer}</p>
               </details>
             ))}
           </div>
@@ -190,16 +190,16 @@ export default function UtmBuilderPage() {
 function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">{eyebrow}</p>
-      <h2 className="mt-3 max-w-3xl text-3xl font-bold leading-tight text-slate-950">{title}</h2>
+      <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">{eyebrow}</p>
+      <h2 className="mt-3 max-w-3xl text-3xl md:text-4xl font-semibold leading-tight text-neutral-900">{title}</h2>
     </div>
   );
 }
 
 function InfoBlock({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-      <h2 className="text-2xl font-bold text-slate-950">{title}</h2>
+    <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+      <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900">{title}</h2>
       <div className="mt-5">{children}</div>
     </div>
   );
@@ -207,11 +207,11 @@ function InfoBlock({ title, children }: { title: string; children: ReactNode }) 
 
 function ExampleBox({ title, values }: { title: string; values: string[] }) {
   return (
-    <div className="rounded-md border border-slate-200 bg-slate-50 p-4">
-      <h3 className="text-sm font-bold text-slate-950">{title}</h3>
+    <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-4">
+      <h3 className="text-sm font-bold text-neutral-900">{title}</h3>
       <div className="mt-3 space-y-2">
         {values.map((value) => (
-          <code key={value} className="block rounded bg-white px-2 py-1 text-sm text-slate-700">
+          <code key={value} className="block rounded bg-white px-2 py-1 text-sm text-neutral-600">
             {value}
           </code>
         ))}
@@ -222,7 +222,7 @@ function ExampleBox({ title, values }: { title: string; values: string[] }) {
 
 function LongContent() {
   return (
-    <div className="mt-8 space-y-6 text-base leading-8 text-slate-600">
+    <div className="mt-8 space-y-6 text-base md:text-lg leading-8 text-neutral-500">
       <p>
         UTM parameters are campaign tracking values that sit at the end of a URL. They do not change the destination page, but they add context that analytics platforms can read when a visitor arrives. A UTM link can show that a visit came from google, facebook, a newsletter, youtube, an affiliate partner, or a QR code. It can also show the marketing channel, campaign name, paid keyword, creative variation, or button placement that produced the click.
       </p>

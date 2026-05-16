@@ -70,19 +70,19 @@ export function HomepageUtmBuilder() {
   }
 
   return (
-    <div id="homepage-builder" className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <div id="homepage-builder" className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="text-sm font-semibold text-emerald-700">Homepage UTM Builder</p>
-          <h2 className="mt-1 text-xl font-bold text-slate-950">Create a trackable campaign URL</h2>
+          <p className="text-sm font-semibold text-blue-700">Homepage UTM Builder</p>
+          <h2 className="mt-1 text-xl font-bold text-neutral-900">Create a trackable campaign URL</h2>
         </div>
-        <div className="hidden rounded-md bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-800 sm:block">
+        <div className="hidden rounded-xl bg-blue-50 px-3 py-2 text-sm font-medium text-blue-800 sm:block">
           {isValid ? "Valid setup" : "Needs review"}
         </div>
       </div>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <label className="sm:col-span-2 text-sm font-medium text-slate-700">
+        <label className="sm:col-span-2 text-sm font-medium text-neutral-600">
           Website URL
           <Input className="mt-2" value={values.websiteUrl} onChange={(event) => updateValue("websiteUrl", event.target.value)} />
         </label>
@@ -108,10 +108,10 @@ export function HomepageUtmBuilder() {
         </Button>
       </div>
 
-      <div className="mt-5 rounded-lg border border-slate-200 bg-slate-50 p-4">
+      <div className="mt-5 rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
         <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
-          <div className="flex items-center gap-2 text-sm font-semibold text-slate-950">
-            <CheckCircle2 className={isValid ? "text-emerald-600" : "text-amber-600"} size={17} aria-hidden="true" />
+          <div className="flex items-center gap-2 text-sm font-semibold text-neutral-900">
+            <CheckCircle2 className={isValid ? "text-blue-600" : "text-amber-600"} size={17} aria-hidden="true" />
             Validation status: {isValid ? "Ready to use" : "Check required fields"}
           </div>
           <Button variant="secondary" onClick={() => setQrReady(true)} disabled={!result}>
@@ -119,11 +119,11 @@ export function HomepageUtmBuilder() {
             <span className="ml-2">QR code</span>
           </Button>
         </div>
-        <pre className="mt-4 min-h-20 whitespace-pre-wrap break-all rounded-md border border-slate-200 bg-white p-3 text-sm leading-6 text-slate-700">
+        <pre className="mt-4 min-h-20 whitespace-pre-wrap font-mono break-all rounded-xl border border-neutral-200 bg-white p-3 text-sm leading-6 text-neutral-600">
           {visibleResult}
         </pre>
         {qrReady ? (
-          <p className="mt-3 text-sm text-slate-600">
+          <p className="mt-3 text-sm text-neutral-500">
             QR workflow ready: use this generated URL as the destination for your QR campaign.
           </p>
         ) : null}
@@ -146,7 +146,7 @@ function Field({
   className?: string;
 }) {
   return (
-    <label className={`text-sm font-medium text-slate-700 ${className}`}>
+    <label className={`text-sm font-medium text-neutral-600 ${className}`}>
       {label}
       <Input className="mt-2" value={value} onChange={(event) => onChange(event.target.value)} placeholder={placeholder} />
     </label>

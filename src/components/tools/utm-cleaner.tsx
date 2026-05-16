@@ -87,12 +87,12 @@ export function UtmCleaner() {
 
   return (
     <div id="cleaner" className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-      <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-        <div className="flex items-center gap-2 text-sm font-semibold text-emerald-700">
+      <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="flex items-center gap-2 text-sm font-semibold text-blue-700">
           <Shield size={17} aria-hidden="true" />
           URL Input Section
         </div>
-        <label className="mt-5 block text-sm font-medium text-slate-700">
+        <label className="mt-5 block text-sm font-medium text-neutral-600">
           Tracking URL
           <Textarea
             className="mt-2 min-h-40 text-base"
@@ -115,8 +115,8 @@ export function UtmCleaner() {
           </Button>
         </div>
 
-        <div className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4">
-          <h2 className="font-bold text-slate-950">Selective Removal System</h2>
+        <div className="mt-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+          <h2 className="font-bold text-neutral-900">Selective Removal System</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <Toggle label="Remove UTM parameters" checked={options.utm} onChange={(value) => updateOption("utm", value)} />
             <Toggle label="Remove Facebook tracking" checked={options.facebook} onChange={(value) => updateOption("facebook", value)} />
@@ -127,8 +127,8 @@ export function UtmCleaner() {
           </div>
         </div>
 
-        <div className="mt-6 rounded-lg border border-slate-200 bg-white p-4">
-          <h2 className="font-bold text-slate-950">Advanced Cleanup Options</h2>
+        <div className="mt-6 rounded-2xl border border-neutral-200 bg-white p-4">
+          <h2 className="font-bold text-neutral-900">Advanced Cleanup Options</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <Toggle label="Preserve important query parameters" checked={options.preserveImportant} onChange={(value) => updateOption("preserveImportant", value)} />
             <Toggle label="Remove duplicate params" checked={options.removeDuplicates} onChange={(value) => updateOption("removeDuplicates", value)} />
@@ -140,8 +140,8 @@ export function UtmCleaner() {
       </div>
 
       <div className="space-y-6">
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-950">Cleaned URL Output</h2>
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+          <h2 className="text-xl font-bold text-neutral-900">Cleaned URL Output</h2>
           <BeforeAfter label="Original URL" value={cleaned.original || input} />
           <BeforeAfter label="Clean URL" value={cleaned.cleanUrl || "Enter a valid URL to generate a clean version."} highlight />
           <div className="mt-4 flex flex-wrap gap-2">
@@ -152,14 +152,14 @@ export function UtmCleaner() {
           </div>
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
+        <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
           <div className="flex items-center gap-2">
-            <ListChecks size={18} className="text-emerald-700" aria-hidden="true" />
-            <h2 className="text-xl font-bold text-slate-950">Tracking Parameters Detection</h2>
+            <ListChecks size={18} className="text-blue-700" aria-hidden="true" />
+            <h2 className="text-xl font-bold text-neutral-900">Tracking Parameters Detection</h2>
           </div>
-          <div className="mt-5 overflow-x-auto rounded-lg border border-slate-200 bg-white">
+          <div className="mt-5 overflow-x-auto rounded-2xl border border-neutral-200 bg-white">
             <table className="min-w-[520px] w-full border-collapse text-sm">
-              <thead className="bg-slate-50 text-left text-slate-700">
+              <thead className="bg-neutral-50 text-left text-neutral-600">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Parameter</th>
                   <th className="px-4 py-3 font-semibold">Type</th>
@@ -169,11 +169,11 @@ export function UtmCleaner() {
               <tbody>
                 {cleaned.detected.length ? (
                   cleaned.detected.map((param) => (
-                    <tr key={`${param.key}-${param.value}`} className="border-t border-slate-100">
-                      <td className="px-4 py-3 font-medium text-slate-950">{param.key}</td>
-                      <td className="px-4 py-3 text-slate-600">{param.type}</td>
+                    <tr key={`${param.key}-${param.value}`} className="border-t border-neutral-100">
+                      <td className="px-4 py-3 font-medium text-neutral-900">{param.key}</td>
+                      <td className="px-4 py-3 text-neutral-500">{param.type}</td>
                       <td className="px-4 py-3">
-                        <span className={`rounded-md px-2 py-1 text-xs font-semibold ${param.removed ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-600"}`}>
+                        <span className={`rounded-xl px-2 py-1 text-xs font-semibold ${param.removed ? "bg-blue-50 text-blue-700" : "bg-neutral-100 text-neutral-500"}`}>
                           {param.removed ? "Removed" : "Preserved"}
                         </span>
                       </td>
@@ -181,7 +181,7 @@ export function UtmCleaner() {
                   ))
                 ) : (
                   <tr>
-                    <td className="px-4 py-6 text-slate-600" colSpan={3}>
+                    <td className="px-4 py-6 text-neutral-500" colSpan={3}>
                       No removable tracking parameters detected.
                     </td>
                   </tr>
@@ -191,8 +191,8 @@ export function UtmCleaner() {
           </div>
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-950">Supported Tracking Parameters</h2>
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+          <h2 className="text-xl font-bold text-neutral-900">Supported Tracking Parameters</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             <ParamGroup title="UTM" values={["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"]} />
             <ParamGroup title="Advertising" values={["gclid", "fbclid", "ttclid", "msclkid"]} />
@@ -201,9 +201,9 @@ export function UtmCleaner() {
         </div>
       </div>
 
-      <div className="lg:col-span-2 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="text-xl font-bold text-slate-950">Bulk URL Cleaning Section</h2>
-        <p className="mt-2 text-sm leading-6 text-slate-600">Paste one URL per line to clean multiple tracking links at once.</p>
+      <div className="lg:col-span-2 rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+        <h2 className="text-xl font-bold text-neutral-900">Bulk URL Cleaning Section</h2>
+        <p className="mt-2 text-sm leading-6 text-neutral-500">Paste one URL per line to clean multiple tracking links at once.</p>
         <Textarea className="mt-4 min-h-36 font-mono text-sm" value={bulkInput} onChange={(event) => setBulkInput(event.target.value)} />
         <div className="mt-4 flex flex-wrap gap-2">
           <Button onClick={() => setBulkInput(bulk.map((item) => item.cleanUrl).join("\n"))}>Clean All</Button>
@@ -219,15 +219,15 @@ export function UtmCleaner() {
         </div>
         <div className="mt-5 grid gap-3">
           {bulk.slice(0, 4).map((item) => (
-            <div key={item.original} className="rounded-md border border-slate-200 bg-slate-50 p-3 text-sm">
-              <p className="break-all text-slate-500">{item.original}</p>
-              <p className="mt-2 break-all font-medium text-slate-950">{item.cleanUrl}</p>
+            <div key={item.original} className="rounded-xl border border-neutral-200 bg-neutral-50 p-3 text-sm">
+              <p className="font-mono break-all text-neutral-500">{item.original}</p>
+              <p className="mt-2 font-mono break-all font-medium text-neutral-900">{item.cleanUrl}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-neutral-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-md gap-2">
           <Button className="flex-1" onClick={() => setInput(cleaned.cleanUrl || input.trim())}>
             Clean
@@ -301,7 +301,7 @@ function shouldRemoveParam(key: string, type: string, options: Options) {
 
 function Toggle({ label, checked, onChange }: { label: string; checked: boolean; onChange: (value: boolean) => void }) {
   return (
-    <label className="flex min-h-11 items-center gap-3 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700">
+    <label className="flex min-h-11 items-center gap-3 rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm font-medium text-neutral-600">
       <input checked={checked} type="checkbox" onChange={(event) => onChange(event.target.checked)} />
       {label}
     </label>
@@ -311,8 +311,8 @@ function Toggle({ label, checked, onChange }: { label: string; checked: boolean;
 function BeforeAfter({ label, value, highlight = false }: { label: string; value: string; highlight?: boolean }) {
   return (
     <div className="mt-4">
-      <p className="text-sm font-semibold text-slate-950">{label}</p>
-      <p className={`mt-2 break-all rounded-md border p-3 text-sm leading-6 ${highlight ? "border-emerald-200 bg-emerald-50 text-emerald-900" : "border-slate-200 bg-slate-50 text-slate-600"}`}>
+      <p className="text-sm font-semibold text-neutral-900">{label}</p>
+      <p className={`mt-2 font-mono break-all rounded-xl border p-3 text-sm leading-6 ${highlight ? "border-blue-200 bg-blue-50 text-blue-900" : "border-neutral-200 bg-neutral-50 text-neutral-500"}`}>
         {value}
       </p>
     </div>
@@ -321,11 +321,11 @@ function BeforeAfter({ label, value, highlight = false }: { label: string; value
 
 function ParamGroup({ title, values }: { title: string; values: string[] }) {
   return (
-    <div className="rounded-md border border-slate-200 bg-slate-50 p-3">
-      <h3 className="font-semibold text-slate-950">{title}</h3>
+    <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-3">
+      <h3 className="font-semibold text-neutral-900">{title}</h3>
       <div className="mt-2 space-y-1">
         {values.map((value) => (
-          <code key={value} className="block text-xs text-slate-600">
+          <code key={value} className="block text-xs text-neutral-500">
             {value}
           </code>
         ))}

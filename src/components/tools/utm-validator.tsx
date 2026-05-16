@@ -35,12 +35,12 @@ export function UtmValidator() {
 
   return (
     <div id="validator" className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-      <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-        <div className="flex items-center gap-2 text-sm font-semibold text-emerald-700">
+      <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="flex items-center gap-2 text-sm font-semibold text-blue-700">
           <ScanLine size={17} aria-hidden="true" />
           URL Input Section
         </div>
-        <label className="mt-5 block text-sm font-medium text-slate-700">
+        <label className="mt-5 block text-sm font-medium text-neutral-600">
           Campaign URL
           <Textarea
             className="mt-2 min-h-40 text-base"
@@ -64,8 +64,8 @@ export function UtmValidator() {
           </Button>
         </div>
 
-        <div className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4">
-          <h2 className="font-bold text-slate-950">Auto Fix Suggestions</h2>
+        <div className="mt-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-4">
+          <h2 className="font-bold text-neutral-900">Auto Fix Suggestions</h2>
           <div className="mt-4 flex flex-wrap gap-2">
             <Button variant="secondary" onClick={() => setInput(analysis.fixUppercaseUrl)} disabled={!analysis.fixUppercaseUrl}>
               <Sparkles size={16} aria-hidden="true" />
@@ -87,14 +87,14 @@ export function UtmValidator() {
       </div>
 
       <div className="space-y-6">
-        <div className={`rounded-lg border p-5 shadow-sm ${statusStyle(analysis.status)}`}>
+        <div className={`rounded-2xl border p-5 shadow-sm ${statusStyle(analysis.status)}`}>
           <p className="text-sm font-semibold uppercase tracking-wide">Validation Results UI</p>
-          <h2 className="mt-2 text-2xl font-bold">{analysis.statusLabel}</h2>
+          <h2 className="mt-2 text-3xl md:text-4xl font-semibold">{analysis.statusLabel}</h2>
           <p className="mt-2 text-sm leading-6">{analysis.summary}</p>
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-950">Detailed Analysis</h2>
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+          <h2 className="text-xl font-bold text-neutral-900">Detailed Analysis</h2>
           <div className="mt-5 grid gap-3">
             <AnalysisRow label="URL Structure" value={analysis.isValidUrl ? "Valid" : "Invalid"} />
             <AnalysisRow label="Campaign Source" value={analysis.params.utm_source || "Missing"} />
@@ -105,14 +105,14 @@ export function UtmValidator() {
           </div>
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
-          <h2 className="text-xl font-bold text-slate-950">Problems Found</h2>
+        <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
+          <h2 className="text-xl font-bold text-neutral-900">Problems Found</h2>
           <DiagnosticList items={analysis.diagnostics.filter((item) => item.type !== "success")} />
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-950">Recommendations</h2>
-          <ul className="mt-4 space-y-2 text-sm leading-6 text-slate-600">
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+          <h2 className="text-xl font-bold text-neutral-900">Recommendations</h2>
+          <ul className="mt-4 space-y-2 text-sm leading-6 text-neutral-500">
             {analysis.recommendations.map((item) => (
               <li key={item}>- {item}</li>
             ))}
@@ -120,7 +120,7 @@ export function UtmValidator() {
         </div>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-neutral-200 bg-white/95 p-3 shadow-2xl backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-md gap-2">
           <Button className="flex-1" onClick={() => setInput(input.trim())}>
             Validate
@@ -263,29 +263,29 @@ function normalizeUrl(url: URL, options: { lowercase: boolean; spaces: boolean; 
 }
 
 function statusStyle(status: ValidationStatus) {
-  if (status === "success") return "border-emerald-200 bg-emerald-50 text-emerald-900";
+  if (status === "success") return "border-blue-200 bg-blue-50 text-blue-900";
   if (status === "warning") return "border-amber-200 bg-amber-50 text-amber-900";
   return "border-red-200 bg-red-50 text-red-900";
 }
 
 function AnalysisRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="grid gap-2 rounded-md border border-slate-200 bg-slate-50 p-3 text-sm sm:grid-cols-[180px_1fr]">
-      <span className="font-semibold text-slate-950">{label}</span>
-      <span className="break-all text-slate-600">{value}</span>
+    <div className="grid gap-2 rounded-xl border border-neutral-200 bg-neutral-50 p-3 text-sm sm:grid-cols-[180px_1fr]">
+      <span className="font-semibold text-neutral-900">{label}</span>
+      <span className="font-mono break-all text-neutral-500">{value}</span>
     </div>
   );
 }
 
 function DiagnosticList({ items }: { items: Diagnostic[] }) {
   if (!items.length) {
-    return <p className="mt-4 rounded-md bg-emerald-50 p-3 text-sm font-medium text-emerald-800">No problems found.</p>;
+    return <p className="mt-4 rounded-xl bg-blue-50 p-3 text-sm font-medium text-blue-800">No problems found.</p>;
   }
 
   return (
     <div className="mt-4 space-y-3">
       {items.map((item) => (
-        <div key={`${item.title}-${item.detail}`} className={`rounded-md border p-3 text-sm ${statusStyle(item.type)}`}>
+        <div key={`${item.title}-${item.detail}`} className={`rounded-xl border p-3 text-sm ${statusStyle(item.type)}`}>
           <p className="font-semibold">{item.title}</p>
           <p className="mt-1 leading-6">{item.detail}</p>
         </div>
