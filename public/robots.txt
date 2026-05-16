@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://utmbuilder.com
+
+# Sitemaps
+Sitemap: https://utmbuilder.com/sitemap.xml
