@@ -28,11 +28,11 @@ export default function Home() {
               Generate UTM links, validate campaign URLs, decode parameters, clean tracking links, and learn practical analytics workflows from a fast static website.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link className="inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800" href="/tools/utm-builder">
+              <Link className="inline-flex h-12 items-center justify-center rounded-md bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800" href="/utm-builder">
                 Open UTM Builder
                 <ArrowRight className="ml-2" size={17} aria-hidden="true" />
               </Link>
-              <Link className="inline-flex h-12 items-center justify-center rounded-md border border-slate-200 px-5 text-sm font-semibold text-slate-950 hover:bg-slate-50" href="/guides">
+              <Link className="inline-flex h-12 items-center justify-center rounded-md border border-slate-200 px-5 text-sm font-semibold text-slate-950 hover:bg-slate-50" href="/campaign-tracking-guide">
                 Read tracking guides
               </Link>
             </div>
@@ -60,7 +60,7 @@ export default function Home() {
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {tools.map((tool) => (
-              <Link key={tool.slug} href={`/tools/${tool.slug}`} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+              <Link key={tool.slug} href={`/${tool.slug}`} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <h3 className="text-lg font-semibold text-slate-950">{tool.name}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-600">{tool.description}</p>
               </Link>
@@ -71,9 +71,9 @@ export default function Home() {
 
       <Section className="bg-slate-50">
         <Container className="grid gap-10 lg:grid-cols-3">
-          <IndexBlock title="Guides" items={guides.map((item) => ({ href: "/guides", label: item.title }))} />
-          <IndexBlock title="Glossary" items={glossaryTerms.map((item) => ({ href: `/glossary/${item.slug}`, label: item.term }))} />
-          <IndexBlock title="Programmatic pages" items={[...platforms.slice(0, 3).map((item) => ({ href: `/platforms/${item.slug}`, label: `${item.name} UTM guide` })), ...countries.slice(0, 2).map((item) => ({ href: `/countries/${item.slug}`, label: `${item.name} tracking guide` }))]} />
+          <IndexBlock title="Guides" items={guides.map((item) => ({ href: `/${item.slug}`, label: item.title }))} />
+          <IndexBlock title="Glossary" items={glossaryTerms.map((item) => ({ href: `/${item.slug}`, label: item.term }))} />
+          <IndexBlock title="Programmatic pages" items={[...platforms.slice(0, 3).map((item) => ({ href: `/utm-builder-for-${item.slug.replace("facebook-ads", "facebook")}`, label: `${item.name} UTM guide` })), ...countries.slice(0, 2).map((item) => ({ href: item.slug === "united-states" ? "/utm-builder-usa" : "/utm-builder-uk", label: `${item.name} tracking guide` }))]} />
         </Container>
       </Section>
     </>
@@ -100,4 +100,3 @@ function IndexBlock({
     </div>
   );
 }
-

@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { countries, platforms, tools } from "@/data/site-data";
+import { seoPages } from "@/data/site-data";
+
+const toolLinks = seoPages.filter((page) => page.category === "tool").slice(0, 5);
+const platformLinks = seoPages.filter((page) => page.category === "platform").slice(0, 5);
 
 export function SiteFooter() {
   return (
@@ -11,14 +14,14 @@ export function SiteFooter() {
             Free static marketing tracking tools and practical analytics education for cleaner attribution.
           </p>
         </div>
-        <FooterGroup title="Tools" items={tools.slice(0, 5).map((tool) => ({ href: `/tools/${tool.slug}`, label: tool.name }))} />
-        <FooterGroup title="Platforms" items={platforms.slice(0, 5).map((platform) => ({ href: `/platforms/${platform.slug}`, label: platform.name }))} />
+        <FooterGroup title="Tools" items={toolLinks.map((page) => ({ href: `/${page.slug}`, label: page.title }))} />
+        <FooterGroup title="Platforms" items={platformLinks.map((page) => ({ href: `/${page.slug}`, label: page.title }))} />
         <FooterGroup
           title="Company"
           items={[
-            { href: `/countries/${countries[0].slug}`, label: "Country pages" },
+            { href: "/utm-builder-usa", label: "Country pages" },
             { href: "/compare", label: "Comparisons" },
-            { href: "/privacy", label: "Privacy" },
+            { href: "/privacy-policy", label: "Privacy" },
             { href: "/terms", label: "Terms" },
             { href: "/contact", label: "Contact" },
           ]}
@@ -50,4 +53,3 @@ function FooterGroup({
     </div>
   );
 }
-
