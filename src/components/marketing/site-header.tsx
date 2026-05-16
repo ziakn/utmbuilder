@@ -2,10 +2,12 @@ import Link from "next/link";
 import { BarChart3 } from "lucide-react";
 
 const nav = [
-  { href: "/utm-builder", label: "Tools" },
+  { href: "/utm-builder", label: "UTM Builder" },
+  { href: "/marketing-tools", label: "Tools" },
   { href: "/campaign-tracking-guide", label: "Guides" },
-  { href: "/utm-source", label: "Glossary" },
   { href: "/blog", label: "Blog" },
+  { href: "/utm-source", label: "Glossary" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader() {
@@ -29,7 +31,7 @@ export function SiteHeader() {
           href="/utm-builder"
           className="rounded-md bg-slate-950 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
         >
-          Build UTM
+          Start Building
         </Link>
       </div>
     </header>
