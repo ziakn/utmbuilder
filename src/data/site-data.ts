@@ -138,6 +138,13 @@ export const guides = [
 
 export const blogPosts = [
   {
+    slug: "traffic-growth-seo-scaling-strategy",
+    title: "Traffic Growth and SEO Scaling Strategy for a UTM Tool Site",
+    description:
+      "A practical SEO growth plan for topical authority, content clusters, internal links, and scalable campaign tracking search traffic.",
+    date: "2026-05-16",
+  },
+  {
     slug: "utm-tracking-basics",
     title: "UTM Tracking Basics: A Practical Guide for Marketers",
     description:
