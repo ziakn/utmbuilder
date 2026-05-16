@@ -1,0 +1,12 @@
+[
+  {"slug":"usa","name":"United States","market":"US","currency":"USD","exampleSource":"facebook","regionalTip":"Separate national campaigns from state or city-specific promotions."},
+  {"slug":"uk","name":"United Kingdom","market":"UK","currency":"GBP","exampleSource":"google","regionalTip":"Keep UK campaign names separate from broader Europe or global campaigns."},
+  {"slug":"canada","name":"Canada","market":"CA","currency":"CAD","exampleSource":"newsletter","regionalTip":"Use content values for province, language, or regional placement details."},
+  {"slug":"germany","name":"Germany","market":"DE","currency":"EUR","exampleSource":"linkedin","regionalTip":"Separate German-language campaigns from pan-European campaign traffic."},
+  {"slug":"australia","name":"Australia","market":"AU","currency":"AUD","exampleSource":"instagram","regionalTip":"Track seasonal timing clearly because campaign calendars differ from northern markets."},
+  {"slug":"india","name":"India","market":"IN","currency":"INR","exampleSource":"youtube","regionalTip":"Use content values for language, region, or creator placements when needed."},
+  {"slug":"pakistan","name":"Pakistan","market":"PK","currency":"PKR","exampleSource":"facebook","regionalTip":"Track paid social and WhatsApp-adjacent campaign links with consistent source names."},
+  {"slug":"uae","name":"United Arab Emirates","market":"UAE","currency":"AED","exampleSource":"google","regionalTip":"Separate Dubai, Abu Dhabi, and national campaign reporting when campaigns differ."},
+  {"slug":"saudi-arabia","name":"Saudi Arabia","market":"KSA","currency":"SAR","exampleSource":"snapchat","regionalTip":"Document local platform conventions before launching large paid campaigns."},
+  {"slug":"singapore","name":"Singapore","market":"SG","currency":"SGD","exampleSource":"linkedin","regionalTip":"Use regional campaign names when Singapore is part of wider APAC reporting."}
+]

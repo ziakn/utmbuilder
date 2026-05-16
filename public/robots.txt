@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://utmbuilder.com
+Host: https://utmbuilder.ziamuhammad.com
 
 # Sitemaps
-Sitemap: https://utmbuilder.com/sitemap.xml
+Sitemap: https://utmbuilder.ziamuhammad.com/sitemap.xml

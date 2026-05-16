@@ -1,0 +1,12 @@
+[
+  {"slug":"email-newsletter","name":"Email Newsletter","source":"newsletter","medium":"email","campaign":"weekly_digest","useCase":"weekly newsletters, promotional sends, lifecycle campaigns, and editorial roundups"},
+  {"slug":"affiliate-marketing","name":"Affiliate Marketing","source":"partner_name","medium":"affiliate","campaign":"affiliate_push","useCase":"partner links, coupon placements, creators, comparison sites, and referral pages"},
+  {"slug":"product-launch","name":"Product Launch","source":"launch_list","medium":"email","campaign":"product_launch","useCase":"launch emails, social posts, ads, creator campaigns, and QR placements"},
+  {"slug":"black-friday","name":"Black Friday","source":"google","medium":"cpc","campaign":"black_friday","useCase":"paid search, paid social, email, affiliates, and ecommerce landing pages"},
+  {"slug":"webinar","name":"Webinar","source":"linkedin","medium":"social","campaign":"webinar_signup","useCase":"registration pages, reminder emails, partner promotions, and follow-up links"},
+  {"slug":"event-promotion","name":"Event Promotion","source":"event","medium":"qr","campaign":"conference_2026","useCase":"booth signage, flyers, speaker slides, badges, and event handouts"},
+  {"slug":"influencer-campaign","name":"Influencer Campaign","source":"creator_name","medium":"influencer","campaign":"brand_collab","useCase":"creator bios, stories, reels, videos, newsletters, and event activations"},
+  {"slug":"paid-search","name":"Paid Search","source":"google","medium":"cpc","campaign":"brand_search","useCase":"search campaigns, keyword groups, ad variations, and landing page tests"},
+  {"slug":"retargeting","name":"Retargeting","source":"facebook","medium":"paid_social","campaign":"retargeting","useCase":"warm audiences, cart abandoners, site visitors, and product viewers"},
+  {"slug":"qr-campaign","name":"QR Campaign","source":"flyer","medium":"qr","campaign":"offline_promo","useCase":"flyers, posters, product packaging, menus, signs, and business cards"}
+]

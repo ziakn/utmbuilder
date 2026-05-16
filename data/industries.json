@@ -1,0 +1,12 @@
+[
+  {"slug":"restaurants","name":"Restaurants","source":"flyer","medium":"qr","campaign":"menu_promo","example":"Track menu QR codes, table tents, local flyers, and seasonal offers."},
+  {"slug":"real-estate","name":"Real Estate","source":"yard_sign","medium":"qr","campaign":"property_listing","example":"Track property signs, open house flyers, agent cards, and listing pages."},
+  {"slug":"ecommerce","name":"Ecommerce","source":"google","medium":"cpc","campaign":"product_launch","example":"Track product pages, collections, bundles, coupons, and seasonal sales."},
+  {"slug":"saas","name":"SaaS","source":"linkedin","medium":"paid_social","campaign":"demo_signup","example":"Track demo campaigns, webinars, onboarding pages, and launch announcements."},
+  {"slug":"agencies","name":"Agencies","source":"client_campaign","medium":"multi_channel","campaign":"monthly_launch","example":"Track client deliverables across ads, email, social, QR, affiliates, and partners."},
+  {"slug":"healthcare","name":"Healthcare","source":"clinic_flyer","medium":"qr","campaign":"appointment_booking","example":"Track appointment pages, local flyers, event booths, and educational resources."},
+  {"slug":"education","name":"Education","source":"campus_event","medium":"qr","campaign":"enrollment_drive","example":"Track open days, admissions campaigns, course pages, and student events."},
+  {"slug":"nonprofits","name":"Nonprofits","source":"donor_email","medium":"email","campaign":"fundraising_drive","example":"Track fundraising emails, event flyers, volunteer pages, and partner appeals."},
+  {"slug":"fitness","name":"Fitness","source":"instagram","medium":"social","campaign":"membership_offer","example":"Track gym promotions, class schedules, influencer posts, and referral offers."},
+  {"slug":"b2b","name":"B2B Companies","source":"linkedin","medium":"paid_social","campaign":"lead_generation","example":"Track webinars, whitepapers, case studies, demos, and conference campaigns."}
+]

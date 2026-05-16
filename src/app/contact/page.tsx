@@ -17,7 +17,7 @@ export default function ContactPage() {
           For corrections, content suggestions, sponsored placements, or partnership inquiries, add a dedicated email address here before launch.
         </p>
         <div className="mt-8 rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm leading-6 text-slate-600">
-          Suggested launch address: hello@utmbuilder.com
+          Suggested launch address: hello@utmbuilder.ziamuhammad.com
         </div>
       </Container>
     </Section>

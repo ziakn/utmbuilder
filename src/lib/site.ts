@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "UTM Builder",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://utmbuilder.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://utmbuilder.ziamuhammad.com",
   description:
     "Free UTM builder, campaign tracking tools, and practical marketing analytics guides for clean attribution.",
   creator: "UTM Builder",

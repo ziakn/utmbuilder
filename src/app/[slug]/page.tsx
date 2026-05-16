@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container, Section } from "@/components/marketing/section";
+import { ProgrammaticPage } from "@/components/programmatic/programmatic-page";
 import { UtmToolbox } from "@/components/tools/utm-toolbox";
 import { seoPages, tools } from "@/data/site-data";
+import { countries, getCountryFromRootSlug, getIndustryFromRootSlug, industries } from "@/lib/programmatic";
 import { absoluteUrl } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -11,11 +13,38 @@ type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return seoPages.map((page) => ({ slug: page.slug }));
+  const params = [
+    ...seoPages.map((page) => ({ slug: page.slug })),
+    ...countries.map((country) => ({ slug: `utm-builder-${country.slug}` })),
+    ...industries.map((industry) => ({ slug: `utm-builder-for-${industry.slug}` })),
+  ];
+  return Array.from(new Map(params.map((param) => [param.slug, param])).values());
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  const country = getCountryFromRootSlug(slug);
+  if (country) {
+    const title = `UTM Builder ${country.name} - Free Campaign URL Generator`;
+    const description = `Create UTM campaign tracking URLs for ${country.name} marketing campaigns with GA4-ready source, medium, campaign, and content values.`;
+    return {
+      title,
+      description,
+      alternates: { canonical: absoluteUrl(`/${slug}`) },
+      openGraph: { title, description, url: absoluteUrl(`/${slug}`) },
+    };
+  }
+  const industry = getIndustryFromRootSlug(slug);
+  if (industry) {
+    const title = `UTM Builder for ${industry.name} - Free Campaign URL Generator`;
+    const description = `Create GA4-compatible UTM tracking URLs for ${industry.name} campaigns, examples, and marketing attribution workflows.`;
+    return {
+      title,
+      description,
+      alternates: { canonical: absoluteUrl(`/${slug}`) },
+      openGraph: { title, description, url: absoluteUrl(`/${slug}`) },
+    };
+  }
   const page = seoPages.find((item) => item.slug === slug);
   if (!page) return {};
 
@@ -33,6 +62,46 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function SeoPage({ params }: Props) {
   const { slug } = await params;
+  const country = getCountryFromRootSlug(slug);
+  if (country) {
+    return (
+      <ProgrammaticPage
+        kind="country"
+        slug={country.slug}
+        title={`UTM Builder ${country.name}`}
+        description={`Create GA4-compatible campaign tracking URLs for ${country.name} marketing campaigns across paid ads, email, social, affiliate, and QR placements.`}
+        name={country.name}
+        source={country.exampleSource}
+        medium="paid_social"
+        campaign={`${country.market.toLowerCase()}_campaign`}
+        content="market_cta"
+        uniqueAngle={`${country.name} campaign tracking should separate local market performance from global or regional reporting. ${country.regionalTip} Use UTM values to identify the source, channel, campaign, and market-specific placement.`}
+        mistake={`A common ${country.name} tracking mistake is mixing local campaigns with global campaign names, which makes ${country.market} performance harder to isolate in GA4.`}
+        bestPractice={`Include market-specific campaign names or content values when ${country.name} campaigns differ from global messaging.`}
+        canonicalPath={`/${slug}`}
+      />
+    );
+  }
+  const industry = getIndustryFromRootSlug(slug);
+  if (industry) {
+    return (
+      <ProgrammaticPage
+        kind="industry"
+        slug={industry.slug}
+        title={`UTM Builder for ${industry.name}`}
+        description={`Create campaign tracking URLs for ${industry.name} marketing workflows with practical UTM examples and GA4 attribution guidance.`}
+        name={industry.name}
+        source={industry.source}
+        medium={industry.medium}
+        campaign={industry.campaign}
+        content="primary_cta"
+        uniqueAngle={`${industry.example} ${industry.name} campaigns often combine online and offline touchpoints, so clean UTM naming helps teams compare channels, landing pages, and conversion paths.`}
+        mistake={`A common ${industry.name} mistake is using one generic campaign URL for every placement instead of separating high-value channels and assets.`}
+        bestPractice={`Use source and content values to distinguish the ${industry.name} placements that matter most for reporting.`}
+        canonicalPath={`/${slug}`}
+      />
+    );
+  }
   const page = seoPages.find((item) => item.slug === slug);
   if (!page) notFound();
 
@@ -148,4 +217,3 @@ function contentPoints(category: string) {
     "Review campaign reports after launch and refine naming conventions before the next promotion.",
   ];
 }
-
