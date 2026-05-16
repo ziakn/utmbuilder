@@ -172,38 +172,21 @@ function labelFor(kind: ProgrammaticKind) {
   }[kind];
 }
 
+import { BreadcrumbSchema, FAQSchema, WebAppSchema } from "@/components/seo/json-ld";
+
 function ProgrammaticSchema(props: Props) {
   const pageUrl = absoluteUrl(props.canonicalPath);
 
-  const schema = [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      name: props.title,
-      url: pageUrl,
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Any",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      description: props.description,
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqFor(props).map(([question, answer]) => ({
-        "@type": "Question",
-        name: question,
-        acceptedAnswer: { "@type": "Answer", text: answer },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
-        { "@type": "ListItem", position: 2, name: props.title, item: pageUrl },
-      ],
-    },
-  ];
-
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+  return (
+    <>
+      <WebAppSchema name={props.title} url={pageUrl} description={props.description} />
+      <FAQSchema faqs={faqFor(props)} />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: absoluteUrl("/") },
+          { name: props.title, item: pageUrl },
+        ]}
+      />
+    </>
+  );
 }

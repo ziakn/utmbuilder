@@ -6,12 +6,14 @@ import { Container, Section } from "@/components/marketing/section";
 import { getAllPosts, getCategories, getTags } from "@/lib/blog";
 import { absoluteUrl } from "@/lib/site";
 
-export const metadata: Metadata = {
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = constructMetadata({
   title: "Marketing Tracking Blog",
   description:
     "Practical UTM, GA4, campaign tracking, QR tracking, attribution, and analytics guides for marketers.",
-  alternates: { canonical: absoluteUrl("/blog") },
-};
+  path: "/blog",
+});
 
 export default function BlogIndexPage() {
   const posts = getAllPosts();

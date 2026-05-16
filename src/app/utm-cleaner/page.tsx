@@ -5,18 +5,14 @@ import { Container, Section } from "@/components/marketing/section";
 import { UtmCleaner } from "@/components/tools/utm-cleaner";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = constructMetadata({
   title: "Free UTM Cleaner - Remove Tracking Parameters from URLs",
   description:
     "Clean tracking URLs instantly with our free UTM Cleaner. Remove UTM parameters, Facebook tracking IDs, Google Ads tags, analytics query strings, and campaign links safely.",
-  alternates: { canonical: absoluteUrl("/utm-cleaner") },
-  openGraph: {
-    title: "Free UTM Cleaner - Remove Tracking Parameters from URLs",
-    description:
-      "Clean tracking URLs instantly with our free UTM Cleaner. Remove UTM parameters, Facebook tracking IDs, Google Ads tags, analytics query strings, and campaign links safely.",
-    url: absoluteUrl("/utm-cleaner"),
-  },
-};
+  path: "/utm-cleaner",
+});
 
 const privacyPoints = [
   "Tracking links exist so marketers can measure campaign performance.",
@@ -45,10 +41,23 @@ const faqs = [
   ["Will removing UTMs break websites?", "Removing UTMs usually does not break a page, but some normal query parameters such as search, filters, page, or product variants should be preserved."],
 ];
 
+import { BreadcrumbSchema, FAQSchema, WebAppSchema } from "@/components/seo/json-ld";
+
 export default function UtmCleanerPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildSchemas()) }} />
+      <WebAppSchema
+        name="Free UTM Cleaner"
+        description="Remove UTM parameters, Facebook tracking IDs, Google Ads tags, analytics query strings, and campaign links safely."
+        url={absoluteUrl("/utm-cleaner")}
+      />
+      <FAQSchema faqs={faqs} />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: siteConfig.url },
+          { name: "UTM Cleaner", item: absoluteUrl("/utm-cleaner") },
+        ]}
+      />
       <Section className="border-b border-slate-200 bg-white pb-10">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
@@ -185,37 +194,3 @@ function EducationalContent() {
     </div>
   );
 }
-
-function buildSchemas() {
-  return [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      name: "Free UTM Cleaner",
-      url: absoluteUrl("/utm-cleaner"),
-      applicationCategory: "UtilityApplication",
-      operatingSystem: "Any",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      description:
-        "Remove UTM parameters, Facebook tracking IDs, Google Ads tags, analytics query strings, and campaign links safely.",
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqs.map(([question, answer]) => ({
-        "@type": "Question",
-        name: question,
-        acceptedAnswer: { "@type": "Answer", text: answer },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-        { "@type": "ListItem", position: 2, name: "UTM Cleaner", item: absoluteUrl("/utm-cleaner") },
-      ],
-    },
-  ];
-}
-

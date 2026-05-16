@@ -14,14 +14,17 @@ export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
+import { constructMetadata } from "@/lib/seo";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = safeGetPost(slug);
   if (!post) return {};
-  return {
+  
+  return constructMetadata({
     title: post.title,
     description: post.description,
-    alternates: { canonical: absoluteUrl(`/blog/${post.slug}`) },
+    path: `/blog/${post.slug}`,
     openGraph: {
       type: "article",
       title: post.title,
@@ -31,8 +34,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       modifiedTime: post.updated,
       authors: [post.author],
     },
-  };
+  });
 }
+
+import { ArticleSchema, BreadcrumbSchema, FAQSchema } from "@/components/seo/json-ld";
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
@@ -42,7 +47,26 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildSchemas(post)) }} />
+      <ArticleSchema
+        title={post.title}
+        description={post.description}
+        url={absoluteUrl(`/blog/${post.slug}`)}
+        datePublished={post.date}
+        dateModified={post.updated}
+      />
+      <FAQSchema
+        faqs={[
+          [`What is the main takeaway from ${post.title}?`, post.description],
+          ["Which tools should I use after reading this guide?", "Use the UTM Builder, UTM Validator, UTM Decoder, and QR Code with UTM tools to apply the campaign tracking workflow."],
+        ]}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: siteConfig.url },
+          { name: "Blog", item: absoluteUrl("/blog") },
+          { name: post.title, item: absoluteUrl(`/blog/${post.slug}`) },
+        ]}
+      />
       <Section className="border-b border-slate-200 bg-white pb-10">
         <Container>
           <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">{post.category}</p>
@@ -165,49 +189,3 @@ function AuthorBox({ post }: { post: ReturnType<typeof getPostBySlug> }) {
     </div>
   );
 }
-
-function buildSchemas(post: ReturnType<typeof getPostBySlug>) {
-  const faq = [
-    {
-      question: `What is the main takeaway from ${post.title}?`,
-      answer: post.description,
-    },
-    {
-      question: "Which tools should I use after reading this guide?",
-      answer: "Use the UTM Builder, UTM Validator, UTM Decoder, and QR Code with UTM tools to apply the campaign tracking workflow.",
-    },
-  ];
-
-  return [
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: post.title,
-      description: post.description,
-      datePublished: post.date,
-      dateModified: post.updated,
-      author: { "@type": "Organization", name: post.author },
-      publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
-      mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faq.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: { "@type": "Answer", text: item.answer },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-        { "@type": "ListItem", position: 2, name: "Blog", item: absoluteUrl("/blog") },
-        { "@type": "ListItem", position: 3, name: post.title, item: absoluteUrl(`/blog/${post.slug}`) },
-      ],
-    },
-  ];
-}
-

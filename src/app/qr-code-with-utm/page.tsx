@@ -5,18 +5,14 @@ import { Container, Section } from "@/components/marketing/section";
 import { QrUtmGenerator } from "@/components/tools/qr-utm-generator";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = constructMetadata({
   title: "QR Code Generator with UTM Tracking for GA4",
   description:
     "Generate QR codes with UTM tracking parameters for Google Analytics and GA4. Track offline campaigns, flyers, events, packaging, posters, and marketing campaigns with measurable QR scans.",
-  alternates: { canonical: absoluteUrl("/qr-code-with-utm") },
-  openGraph: {
-    title: "QR Code Generator with UTM Tracking for GA4",
-    description:
-      "Generate QR codes with UTM tracking parameters for Google Analytics and GA4. Track offline campaigns, flyers, events, packaging, posters, and marketing campaigns with measurable QR scans.",
-    url: absoluteUrl("/qr-code-with-utm"),
-  },
-};
+  path: "/qr-code-with-utm",
+});
 
 const offlineExamples = [
   ["Restaurant Flyer", "utm_source=flyer&utm_medium=qr"],
@@ -56,10 +52,23 @@ const faqs = [
   ["Are QR code campaigns measurable?", "Yes. QR code campaigns are measurable when the QR destination uses consistent UTM tracking and the landing page has analytics installed."],
 ];
 
+import { BreadcrumbSchema, FAQSchema, WebAppSchema } from "@/components/seo/json-ld";
+
 export default function QrCodeWithUtmPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildSchemas()) }} />
+      <WebAppSchema
+        name="QR Code Generator with UTM Tracking for GA4"
+        description="Generate QR codes with UTM tracking parameters for Google Analytics and GA4 to track offline campaigns, flyers, events, packaging, and posters."
+        url={absoluteUrl("/qr-code-with-utm")}
+      />
+      <FAQSchema faqs={faqs} />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: siteConfig.url },
+          { name: "QR Code with UTM", item: absoluteUrl("/qr-code-with-utm") },
+        ]}
+      />
       <Section className="border-b border-slate-200 bg-white pb-10">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
@@ -206,37 +215,3 @@ function EducationalContent() {
     </div>
   );
 }
-
-function buildSchemas() {
-  return [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      name: "QR Code Generator with UTM Tracking for GA4",
-      url: absoluteUrl("/qr-code-with-utm"),
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Any",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      description:
-        "Generate QR codes with UTM tracking parameters for Google Analytics and GA4 to track offline campaigns, flyers, events, packaging, and posters.",
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqs.map(([question, answer]) => ({
-        "@type": "Question",
-        name: question,
-        acceptedAnswer: { "@type": "Answer", text: answer },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-        { "@type": "ListItem", position: 2, name: "QR Code with UTM", item: absoluteUrl("/qr-code-with-utm") },
-      ],
-    },
-  ];
-}
-

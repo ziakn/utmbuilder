@@ -22,6 +22,11 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     siteName: siteConfig.name,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "UTM Builder - Free UTM Generator and Marketing Tracking Tools",
+    description: siteConfig.description,
+  },
   robots: {
     index: true,
     follow: true,

@@ -5,18 +5,14 @@ import { Container, Section } from "@/components/marketing/section";
 import { UtmDecoder } from "@/components/tools/utm-decoder";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = constructMetadata({
   title: "Free UTM Decoder for Google Analytics & GA4",
   description:
     "Decode campaign tracking URLs with our free UTM Decoder. Analyze UTM parameters, decode tracking links, inspect campaign attribution, and troubleshoot GA4 analytics URLs.",
-  alternates: { canonical: absoluteUrl("/utm-decoder") },
-  openGraph: {
-    title: "Free UTM Decoder for Google Analytics & GA4",
-    description:
-      "Decode campaign tracking URLs with our free UTM Decoder. Analyze UTM parameters, decode tracking links, inspect campaign attribution, and troubleshoot GA4 analytics URLs.",
-    url: absoluteUrl("/utm-decoder"),
-  },
-};
+  path: "/utm-decoder",
+});
 
 const examples = [
   ["Facebook Ads", "utm_source=facebook&utm_medium=paid_social"],
@@ -43,10 +39,23 @@ const faqs = [
   ["Can I export decoded data?", "Yes. The decoder can export decoded parameters as JSON, CSV, or copied text directly in the browser."],
 ];
 
+import { BreadcrumbSchema, FAQSchema, WebAppSchema } from "@/components/seo/json-ld";
+
 export default function UtmDecoderPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildSchemas()) }} />
+      <WebAppSchema
+        name="Free UTM Decoder for Google Analytics & GA4"
+        description="Decode campaign tracking URLs, analyze UTM parameters, inspect campaign attribution, and troubleshoot GA4 analytics URLs."
+        url={absoluteUrl("/utm-decoder")}
+      />
+      <FAQSchema faqs={faqs} />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: siteConfig.url },
+          { name: "UTM Decoder", item: absoluteUrl("/utm-decoder") },
+        ]}
+      />
       <Section className="border-b border-slate-200 bg-white pb-10">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
@@ -184,37 +193,3 @@ function EducationalContent() {
     </div>
   );
 }
-
-function buildSchemas() {
-  return [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      name: "Free UTM Decoder for Google Analytics & GA4",
-      url: absoluteUrl("/utm-decoder"),
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Any",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      description:
-        "Decode campaign tracking URLs, analyze UTM parameters, inspect campaign attribution, and troubleshoot GA4 analytics URLs.",
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqs.map(([question, answer]) => ({
-        "@type": "Question",
-        name: question,
-        acceptedAnswer: { "@type": "Answer", text: answer },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-        { "@type": "ListItem", position: 2, name: "UTM Decoder", item: absoluteUrl("/utm-decoder") },
-      ],
-    },
-  ];
-}
-

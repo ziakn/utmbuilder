@@ -5,18 +5,14 @@ import { Container, Section } from "@/components/marketing/section";
 import { BulkUtmBuilder } from "@/components/tools/bulk-utm-builder";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = constructMetadata({
   title: "Bulk UTM Builder for Google Analytics & GA4",
   description:
     "Generate multiple campaign tracking URLs instantly with our free Bulk UTM Builder. Create UTM links for Google Analytics, GA4, email marketing, paid ads, affiliate campaigns, and social media tracking.",
-  alternates: { canonical: absoluteUrl("/bulk-utm-builder") },
-  openGraph: {
-    title: "Bulk UTM Builder for Google Analytics & GA4",
-    description:
-      "Generate multiple campaign tracking URLs instantly with our free Bulk UTM Builder. Create UTM links for Google Analytics, GA4, email marketing, paid ads, affiliate campaigns, and social media tracking.",
-    url: absoluteUrl("/bulk-utm-builder"),
-  },
-};
+  path: "/bulk-utm-builder",
+});
 
 const useCases = [
   {
@@ -60,10 +56,23 @@ const faqs = [
   ["Can I generate QR codes in bulk?", "Yes. Selected rows can be exported as QR assets, including SVG files in a ZIP and PNG batch downloads."],
 ];
 
+import { BreadcrumbSchema, FAQSchema, WebAppSchema } from "@/components/seo/json-ld";
+
 export default function BulkUtmBuilderPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildSchemas()) }} />
+      <WebAppSchema
+        name="Bulk UTM Builder for Google Analytics & GA4"
+        description="Generate multiple campaign tracking URLs instantly for Google Analytics, GA4, email marketing, paid ads, affiliate campaigns, and social media tracking."
+        url={absoluteUrl("/bulk-utm-builder")}
+      />
+      <FAQSchema faqs={faqs} />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: siteConfig.url },
+          { name: "Bulk UTM Builder", item: absoluteUrl("/bulk-utm-builder") },
+        ]}
+      />
       <Section className="border-b border-slate-200 bg-white pb-10">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
@@ -206,37 +215,3 @@ function EducationalContent() {
     </div>
   );
 }
-
-function buildSchemas() {
-  return [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      name: "Bulk UTM Builder for Google Analytics & GA4",
-      url: absoluteUrl("/bulk-utm-builder"),
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Any",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      description:
-        "Generate multiple campaign tracking URLs instantly for Google Analytics, GA4, email marketing, paid ads, affiliate campaigns, and social media tracking.",
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqs.map(([question, answer]) => ({
-        "@type": "Question",
-        name: question,
-        acceptedAnswer: { "@type": "Answer", text: answer },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-        { "@type": "ListItem", position: 2, name: "Bulk UTM Builder", item: absoluteUrl("/bulk-utm-builder") },
-      ],
-    },
-  ];
-}
-

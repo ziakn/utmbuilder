@@ -21,44 +21,37 @@ export function generateStaticParams() {
   return Array.from(new Map(params.map((param) => [param.slug, param])).values());
 }
 
+import { constructMetadata } from "@/lib/seo";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const country = getCountryFromRootSlug(slug);
   if (country) {
-    const title = `UTM Builder ${country.name} - Free Campaign URL Generator`;
-    const description = `Create UTM campaign tracking URLs for ${country.name} marketing campaigns with GA4-ready source, medium, campaign, and content values.`;
-    return {
-      title,
-      description,
-      alternates: { canonical: absoluteUrl(`/${slug}`) },
-      openGraph: { title, description, url: absoluteUrl(`/${slug}`) },
-    };
+    return constructMetadata({
+      title: `UTM Builder ${country.name} - Free Campaign URL Generator`,
+      description: `Create UTM campaign tracking URLs for ${country.name} marketing campaigns with GA4-ready source, medium, campaign, and content values.`,
+      path: `/${slug}`,
+    });
   }
   const industry = getIndustryFromRootSlug(slug);
   if (industry) {
-    const title = `UTM Builder for ${industry.name} - Free Campaign URL Generator`;
-    const description = `Create GA4-compatible UTM tracking URLs for ${industry.name} campaigns, examples, and marketing attribution workflows.`;
-    return {
-      title,
-      description,
-      alternates: { canonical: absoluteUrl(`/${slug}`) },
-      openGraph: { title, description, url: absoluteUrl(`/${slug}`) },
-    };
+    return constructMetadata({
+      title: `UTM Builder for ${industry.name} - Free Campaign URL Generator`,
+      description: `Create GA4-compatible UTM tracking URLs for ${industry.name} campaigns, examples, and marketing attribution workflows.`,
+      path: `/${slug}`,
+    });
   }
   const page = seoPages.find((item) => item.slug === slug);
   if (!page) return {};
 
-  return {
+  return constructMetadata({
     title: page.title,
     description: page.description,
-    alternates: { canonical: absoluteUrl(`/${page.slug}`) },
-    openGraph: {
-      title: page.title,
-      description: page.description,
-      url: absoluteUrl(`/${page.slug}`),
-    },
-  };
+    path: `/${page.slug}`,
+  });
 }
+
+import { ArticleSchema, BreadcrumbSchema } from "@/components/seo/json-ld";
 
 export default async function SeoPage({ params }: Props) {
   const { slug } = await params;
@@ -106,10 +99,25 @@ export default async function SeoPage({ params }: Props) {
   if (!page) notFound();
 
   const isTool = page.category === "tool" || page.toolMode;
+  const isArticle = page.category === "education" || page.category === "platform" || page.category === "example" || page.category === "comparison" || page.category === "glossary";
   const related = seoPages.filter((item) => item.category === page.category && item.slug !== page.slug).slice(0, 6);
+  const pageUrl = absoluteUrl(`/${page.slug}`);
 
   return (
     <>
+      {isArticle && (
+        <ArticleSchema
+          title={page.title}
+          description={page.description}
+          url={pageUrl}
+        />
+      )}
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: absoluteUrl("/") },
+          { name: page.title, item: pageUrl },
+        ]}
+      />
       <Section className="border-b border-slate-200 bg-slate-50">
         <Container>
           <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">{labelFor(page.category)}</p>

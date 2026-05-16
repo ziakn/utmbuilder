@@ -4,25 +4,21 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Container, Section } from "@/components/marketing/section";
 import { HomepageUtmBuilder } from "@/components/tools/homepage-utm-builder";
 import { absoluteUrl, siteConfig } from "@/lib/site";
+import { constructMetadata } from "@/lib/seo";
+import {
+  BreadcrumbSchema,
+  FAQSchema,
+  OrganizationSchema,
+  WebAppSchema,
+  WebSiteSchema,
+} from "@/components/seo/json-ld";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = constructMetadata({
   title: "Free UTM Builder - Create Campaign Tracking URLs for GA4",
   description:
     "Use our free UTM Builder to create campaign tracking URLs for Google Analytics, GA4, ads, social media, email marketing, affiliate links, and QR campaigns.",
-  alternates: { canonical: absoluteUrl("/") },
-  openGraph: {
-    title: "Free UTM Builder - Create Campaign Tracking URLs for GA4",
-    description:
-      "Use our free UTM Builder to create campaign tracking URLs for Google Analytics, GA4, ads, social media, email marketing, affiliate links, and QR campaigns.",
-    url: absoluteUrl("/"),
-  },
-  twitter: {
-    card: "summary",
-    title: "Free UTM Builder - Create Campaign Tracking URLs for GA4",
-    description:
-      "Use our free UTM Builder to create campaign tracking URLs for Google Analytics, GA4, ads, social media, email marketing, affiliate links, and QR campaigns.",
-  },
-};
+  path: "/",
+});
 
 const popularTools = [
   ["UTM Builder", "/utm-builder", "Create clean campaign tracking URLs with source, medium, campaign, term, and content values."],
@@ -98,11 +94,17 @@ const faqs = [
 ];
 
 export default function Home() {
-  const schema = buildSchemas();
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <OrganizationSchema />
+      <WebSiteSchema />
+      <WebAppSchema
+        name="Free UTM Builder"
+        description="Create campaign tracking URLs for Google Analytics, GA4, ads, social media, email marketing, affiliate links, and QR campaigns."
+        url={siteConfig.url}
+      />
+      <BreadcrumbSchema items={[{ name: "Home", item: siteConfig.url }]} />
+      <FAQSchema faqs={faqs} />
       <Section className="border-b border-slate-200 bg-white pb-10">
         <Container className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
           <div>
@@ -279,46 +281,5 @@ function LinkGroup({ title, items }: { title: string; items: string[][] }) {
   );
 }
 
-function buildSchemas() {
-  return [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      name: "Free UTM Builder",
-      url: siteConfig.url,
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Any",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      description:
-        "Create campaign tracking URLs for Google Analytics, GA4, ads, social media, email marketing, affiliate links, and QR campaigns.",
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqs.map(([question, answer]) => ({
-        "@type": "Question",
-        name: question,
-        acceptedAnswer: { "@type": "Answer", text: answer },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: siteConfig.url,
-        },
-      ],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-      description: siteConfig.description,
-    },
-  ];
+  );
 }

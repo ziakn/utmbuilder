@@ -6,18 +6,14 @@ import { Container, Section } from "@/components/marketing/section";
 import { AdvancedUtmBuilder } from "@/components/tools/advanced-utm-builder";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = constructMetadata({
   title: "Free UTM Builder for Google Analytics & GA4",
   description:
     "Create campaign tracking URLs with our free UTM Builder. Generate UTM links for Google Analytics, GA4, email campaigns, social media, paid ads, affiliate marketing, and QR codes.",
-  alternates: { canonical: absoluteUrl("/utm-builder") },
-  openGraph: {
-    title: "Free UTM Builder for Google Analytics & GA4",
-    description:
-      "Create campaign tracking URLs with our free UTM Builder. Generate UTM links for Google Analytics, GA4, email campaigns, social media, paid ads, affiliate marketing, and QR codes.",
-    url: absoluteUrl("/utm-builder"),
-  },
-};
+  path: "/utm-builder",
+});
 
 const bestRules = [
   "Always lowercase",
@@ -60,10 +56,23 @@ const faqs = [
   ["Should I use uppercase in UTMs?", "No. Lowercase values are easier to keep consistent and reduce fragmented analytics reports."],
 ];
 
+import { BreadcrumbSchema, FAQSchema, WebAppSchema } from "@/components/seo/json-ld";
+
 export default function UtmBuilderPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildSchemas()) }} />
+      <WebAppSchema
+        name="Free UTM Builder for Google Analytics & GA4"
+        description="Create campaign tracking URLs for Google Analytics, GA4, email campaigns, social media, paid ads, affiliate marketing, and QR codes."
+        url={absoluteUrl("/utm-builder")}
+      />
+      <FAQSchema faqs={faqs} />
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", item: siteConfig.url },
+          { name: "UTM Builder", item: absoluteUrl("/utm-builder") },
+        ]}
+      />
       <Section className="border-b border-slate-200 bg-white pb-10">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div>
@@ -249,37 +258,4 @@ function LongContent() {
       </p>
     </div>
   );
-}
-
-function buildSchemas() {
-  return [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      name: "Free UTM Builder for Google Analytics & GA4",
-      url: absoluteUrl("/utm-builder"),
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Any",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      description:
-        "Create campaign tracking URLs for Google Analytics, GA4, email campaigns, social media, paid ads, affiliate marketing, and QR codes.",
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqs.map(([question, answer]) => ({
-        "@type": "Question",
-        name: question,
-        acceptedAnswer: { "@type": "Answer", text: answer },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-        { "@type": "ListItem", position: 2, name: "UTM Builder", item: absoluteUrl("/utm-builder") },
-      ],
-    },
-  ];
 }

@@ -4,11 +4,13 @@ import { Container, Section } from "@/components/marketing/section";
 import { blogPosts, seoPages } from "@/data/site-data";
 import { absoluteUrl } from "@/lib/site";
 
-export const metadata: Metadata = {
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = constructMetadata({
   title: "HTML Sitemap",
   description: "Browse all UTM Builder pages, tools, guides, glossary entries, examples, comparisons, and blog posts.",
-  alternates: { canonical: absoluteUrl("/sitemap") },
-};
+  path: "/sitemap",
+});
 
 export default function SitemapPage() {
   const groups = ["tool", "education", "platform", "example", "glossary", "comparison", "utility", "country", "legal"];
